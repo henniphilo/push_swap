@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 12:15:04 by hwiemann         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:01:52 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // befehle implementieren
 // dann logik
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	initialize(t_Stack *stack)
 {
@@ -65,7 +65,9 @@ int	pop(t_Stack *stack)
 	return(data);
 }
 
-int	main(void)
+//converting arguments von char in int
+//checking for the right arguments, nur zahlen nichts doppelt
+int	main(inr argc, char **argv)
 {
 	t_Stack	stackA;
 	t_Stack	stackB;
