@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 17:01:52 by hwiemann         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:03:39 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,56 @@ int	pop(t_Stack *stack)
 	return(data);
 }
 
+int	check_duplicates(int array[], int size, int num)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if ( array[i++] == num)
+			return 1;
+	}
+	return (0);
+}
+
+void	check_args(int argc, char *argv[], t_Stack *stackA, int *sizeA)
+{
+	int	data[STACK_SIZE];
+	int	i;
+	int	num;
+
+	*stackA = 0;
+	i = 1;
+	while (i< argc)
+	{
+		// muss noch checken nach vorzeichen
+
+		if (num < INT_MIN || num > INT_MAX)
+		{
+			printf("not in the range");
+			exit(-1);
+		}
+		if (check_duplicates(data, *sizeA, num))
+		{
+			printf("dups");
+			exit(-1);
+		}
+		stackA[*sizeA] = num;
+		i++;
+	}
+}
+
 //converting arguments von char in int
 //checking for the right arguments, nur zahlen nichts doppelt
-int	main(inr argc, char **argv)
+int	main(int argc, char *argv[])
 {
-	t_Stack	stackA;
-	t_Stack	stackB;
+	t_list	**stackA;
+	t_list	**stackB;
+
+	if (argc < 2)
+		return(-1);
+	check_args();
 
 	initialize(&stackA);
 	initialize(&stackB);
