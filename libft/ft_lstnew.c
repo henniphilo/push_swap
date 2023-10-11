@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listhandeling.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:48:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:37 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/05/23 11:05:49 by hwiemann          #+#    #+#             */
+/*   Updated: 2023/05/23 18:21:35 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+/* Allocates and returns a new node.*/
 
-t_list	*ft_lstlast(t_list *lst)
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	if (lst == NULL)
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (new_node == NULL)
 		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*pos;
-
-	pos = ft_lstlast(*lst);
-	if (!pos)
-		*lst = new;
-	else
-		pos->next = new;
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }

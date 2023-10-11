@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listhandeling.c                                    :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:48:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:37 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/05/23 17:10:03 by hwiemann          #+#    #+#             */
+/*   Updated: 2023/05/23 17:18:20 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+/* Iterates the list ’lst’ and applies the function
+’f’ on the content of each node.*/
 
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+#include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*pos;
 
-	pos = ft_lstlast(*lst);
-	if (!pos)
-		*lst = new;
-	else
-		pos->next = new;
+	if (lst == NULL || f == NULL)
+		return ;
+	pos = lst;
+	while (pos != NULL)
+	{
+		(*f)(pos->content);
+		pos = pos->next;
+	}
 }

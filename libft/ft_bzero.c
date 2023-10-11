@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listhandeling.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:48:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:37 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/05/11 15:30:06 by hwiemann          #+#    #+#             */
+/*   Updated: 2023/05/17 13:03:25 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+/* The  bzero() function erases the data in the n bytes of the memory
+       starting at the location pointed to by s, by writing zeros  (bytes
+       containing '\0') to that area.
+*/
 
-t_list	*ft_lstlast(t_list *lst)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	size_t	i;
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*pos;
-
-	pos = ft_lstlast(*lst);
-	if (!pos)
-		*lst = new;
-	else
-		pos->next = new;
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
 }

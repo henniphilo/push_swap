@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listhandeling.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:48:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:37 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/05/11 15:29:53 by hwiemann          #+#    #+#             */
+/*   Updated: 2023/05/19 17:03:24 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_atoi(const char *str)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	int	sign;
+	int	result;
+	int	i;
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*pos;
-
-	pos = ft_lstlast(*lst);
-	if (!pos)
-		*lst = new;
-	else
-		pos->next = new;
+	sign = 1;
+	result = 0;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	{
+		i++;
+	}
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i++] == '-')
+			sign *= -1;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (sign * result);
 }

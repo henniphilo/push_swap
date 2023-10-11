@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/10 11:03:39 by hwiemann         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:09:25 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,31 @@ int	check_duplicates(int array[], int size, int num)
 	return (0);
 }
 
+int	check_num(char *arguments[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (arguments[i])
+	{
+		j = 0;
+		if (arguments[i][j] == '-' || arguments[i][j] == '+')
+			j++;
+		while (arguments[i][j])
+		{
+			if ((arguments[i][j] >= '0' && arguments[i][j] <= '9'))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 void	check_args(int argc, char *argv[], t_Stack *stackA, int *sizeA)
 {
-	int	data[STACK_SIZE];
+	int	arguments[STACK_SIZE];
 	int	i;
 	int	num;
 
@@ -88,14 +110,17 @@ void	check_args(int argc, char *argv[], t_Stack *stackA, int *sizeA)
 	i = 1;
 	while (i< argc)
 	{
-		// muss noch checken nach vorzeichen
-
+		if(!check_num(arguments))
+		{
+			printf("not num");
+			exit(-1);
+		}
 		if (num < INT_MIN || num > INT_MAX)
 		{
 			printf("not in the range");
 			exit(-1);
 		}
-		if (check_duplicates(data, *sizeA, num))
+		if (check_duplicates(arguments, *sizeA, num))
 		{
 			printf("dups");
 			exit(-1);
@@ -104,6 +129,8 @@ void	check_args(int argc, char *argv[], t_Stack *stackA, int *sizeA)
 		i++;
 	}
 }
+
+//libft anpassen mit printf
 
 //converting arguments von char in int
 //checking for the right arguments, nur zahlen nichts doppelt

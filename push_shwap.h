@@ -18,7 +18,6 @@
 #include <unistd.h>
 #include <limits.h>
 
-
 #define STACK_SIZE 1000
 
 typedef struct s_Node

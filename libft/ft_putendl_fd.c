@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listhandeling.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:48:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:37 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/05/16 15:28:26 by hwiemann          #+#    #+#             */
+/*   Updated: 2023/05/19 11:32:32 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+/* Outputs the string ’s’ to the given file descriptor
+followed by a newline.*/
 
-t_list	*ft_lstlast(t_list *lst)
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+/*int main ()
 {
-	t_list	*pos;
-
-	pos = ft_lstlast(*lst);
-	if (!pos)
-		*lst = new;
-	else
-		pos->next = new;
-}
+	ft_putendl_fd("hallo", 45);
+} */
