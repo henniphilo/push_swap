@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/12/29 11:15:48 by hwiemann         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:32:20 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	printstack(struct s_stack *head)
 
 	while (ptr != NULL)
 	{
-		ft_printf(" (%d) ", ptr->data);
+		printf(" (%d) ", ptr->data);
 		ptr = ptr->next;
 	}
 }
@@ -39,9 +39,31 @@ struct s_stack *create_node(int data)
 	}
 	else
 	{
-		ft_printf("Error allocating memory");
+		printf("Error allocating memory");
 	}
 	return node;
+}
+
+long int	atoi_ps(const char *str)
+{
+	long int	result;
+	int	sign;
+	int	i;
+
+	sign = 1;
+	result = 0;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if(str[i++] == '-')
+			sign *= -1;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result  * 10 + (str[i] - 48);
+		i++;
+	}
+	return (sign * result);
 }
 
 struct s_stack *init_stack(int argc, char *argv[])
@@ -79,12 +101,12 @@ struct s_stack *init_stack(int argc, char *argv[])
 			}
 			else
 			{
-				ft_printf("Error Init");
+				printf("Error Init");
 			}
 		}
 		else
 		{
-			ft_printf("Error Convert");
+			printf("Error Convert");
 		}
 	}
 	return head;
@@ -96,17 +118,17 @@ int main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		ft_printf("not enough arrguments");
+		printf("not enough arrguments");
 		return 1;
 	}
 	head = init_stack(argc, argv);
 
 	if (head == NULL)
 	{
-		ft_printf("Error Stack init");
+		printf("Error Stack init");
 		return 1;
 	}
-	ft_printf("Stack: ");
+	printf("Stack: ");
 	printstack(head);
 
 	return 0;
