@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listhandeling.c                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:48:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:37 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/10/17 11:41:58 by hwiemann          #+#    #+#             */
+/*   Updated: 2023/10/17 11:52:26 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+long int	atoi_ps(const char *str)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	long int	result;
+	int	sign;
+	int	i;
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*pos;
-
-	pos = ft_lstlast(*lst);
-	if (!pos)
-		*lst = new;
-	else
-		pos->next = new;
+	sign = 1;
+	result = 0;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if(str[i++] == '-')
+			sign *= -1;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result  * 10 + (str[i] - 48);
+		i++;
+	}
+	return (sign * result);
 }

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:45:50 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/06 16:57:59 by hwiemann         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:47:10 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	pa(t_Stack *stackA, t_Stack *stackB)
 	{
 		topElement = pop(stackB);
 		push(stackA, topElement);
-		printf("pa");
+		ft_printf("pa");
 	}
 	else
 	{
-		printf("paError");
+		ft_printf("paError");
 	}
 }
 
@@ -58,11 +58,11 @@ void	sa(t_Stack *stackA)
 
 		push(stackA, top);
 		push(stackA, next);
-		printf("sa");
+		ft_printf("sa");
 	}
 	else
 	{
-		printf("swapaError\n");
+		ft_printf("swapaError\n");
 	}
 }
 
@@ -78,11 +78,11 @@ void	sb(t_Stack *stackB)
 
 		push(stackB, top);
 		push(stackB, next);
-		printf("sb");
+		ft_printf("sb");
 	}
 	else
 	{
-		printf("swapbError\n");
+		ft_printf("swapbError\n");
 	}
 }
 
@@ -90,15 +90,16 @@ void	ss(t_Stack *stackA, t_Stack *stackB)
 {
 	sa(stackA);
 	sb(stackB);
-	printf("ss");
+	ft_printf("ss");
 }
 
 //ra (rotate a): Shift up all elements of stack a by 1. The first element becomes the last one
 //eventuell ft_lstlast verwenden fuer letzten node der liste?
-void	ra(t_Stack *stackA)
+
+/* void	ra(t_Stack *stackA)
 {
 	int	top;
-	int	elements[MAX_SIZE];
+	int	elements[STACK_SIZE];
 	int	i;
 	//int	last;
 
@@ -118,12 +119,12 @@ void	ra(t_Stack *stackA)
 		push(stackA, top);
 		while (i >= 0)
 		{
-			push(stackA; elements[i++])
+			push(stackA, elements[i++])
 		}
-		printf("ra");
+		ft_printf("ra");
 	}
 	else
 	{
-		printf("fail")
+		ft_printf("fail");
 	}
-}
+} */
