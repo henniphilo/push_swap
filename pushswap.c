@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/10/17 12:17:53 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/02 11:56:42 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,84 +19,63 @@
 
 #include "pushswap.h"
 
-int	check_duplicates(int array[], int size, int num)
+static int	check_duplicates(char **argv, int i, int num)
+{
+	i = 0;
+	while (argv[i])
+	{
+		if ( atoi_ps(argv[i]) == num)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int	check_num(char *argument)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
+	if (argument[i] == '-' || argument[i] == '+')
+		i++;
+	while (argument[i])
 	{
-		if ( array[i++] == num)
-			return 1;
-	}
-	return (0);
-}
-
-int	check_num(char *arguments[])
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (arguments[i])
-	{
-		j = 0;
-		if (arguments[i][j] == '-' || arguments[i][j] == '+')
-			j++;
-		while (arguments[i][j])
-		{
-			if ((arguments[i][j] >= '0' && arguments[i][j] <= '9'))
-				return (1);
-			j++;
-		}
+		if (!(argument[i] >= '0' && argument[i] <= '9'))
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
-void	check_args(int argc, char *argv[], t_Stack *stackA, int *sizeA)
+void	check_args(int argc, char **argv)
 {
-	char	arguments[STACK_SIZE];
+	char	**arguments;
 	int	i;
 	int	num;
 
-	*stackA = 0;
-	i = 1;
-	while (i < argc)
+	if (argc > 2)
 	{
-		if(!check_num(arguments[]))
+		i = 1;
+		arguments = argv;
+		while (arguments[i])
 		{
-			ft_printf("not num");
-			exit(-1);
+			if(!check_num(arguments[i]))
+			{
+				ft_printf("not num");
+				exit(-1);
+			}
+			num = atoi_ps(arguments[i]);
+			if (num < INT_MIN || num > INT_MAX)
+			{
+				ft_printf("not in the range");
+				exit(-1);
+			}
+			if (check_duplicates(arguments, i, num))
+			{
+				ft_printf("dups");
+				exit(-1);
+			}
+			i++;
 		}
-		if (num < INT_MIN || num > INT_MAX)
-		{
-			ft_printf("not in the range");
-			exit(-1);
-		}
-		if (check_duplicates(arguments, *sizeA, num))
-		{
-			ft_printf("dups");
-			exit(-1);
-		}
-		stackA[*sizeA] = num;
-		i++;
 	}
-}
-
-//converting arguments von char in int
-//checking for the right arguments, nur zahlen nichts doppelt
-int	main(int argc, char *argv[])
-{
-	t_list	*stackA;
-	t_list	*stackB;
-
-	if (argc < 2)
-		return(-1);
-//	check_args();
-
-	initialize(&stackA);
-	initialize(&stackB);
-
-	return (0);
 }

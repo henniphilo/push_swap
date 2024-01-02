@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/12/29 11:29:03 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:56:34 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-typedef struct s_Node
+/*typedef struct s_Node
 {
 	int	data;
 	struct	t_Node *next;
@@ -39,19 +39,20 @@ typedef struct s_Stack
 	t_Node	*top;
 	size_t	size;
 	int		data[STACK_SIZE];
-}	t_Stack;
+}	t_Stack; */
 
-void	initialize(t_Stack *stack);
-void	push(t_Stack *stack, int data);
-void	pb(t_Stack *stackA, t_Stack *stackB);
-void	pa(t_Stack *stackA, t_Stack *stackB);
-void	sa(t_Stack *stackA);
+//void	pb(t_Stack *stackA, t_Stack *stackB);
+//void	pa(t_Stack *stackA, t_Stack *stackB);
+//void	sa(t_Stack *stackA);
 long int	atoi_ps(const char *str);
+void	check_args(int argc, char **argv);
 
-int	pop(t_Stack *stack);
-int	stackempty(t_Stack *stack);
+
+//int	pop(t_Stack *stack);
+int	stacksize(struct s_stack *stack);
+int	stackempty(struct s_stack *stack);
 void	printstack(struct s_stack *head);
-struct s_stack *init_stack(int argc, char *argv[]);
+struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
 
 

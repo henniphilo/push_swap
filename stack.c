@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/12/29 11:32:20 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:55:43 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	printstack(struct s_stack *head)
 
 	while (ptr != NULL)
 	{
-		printf(" (%d) ", ptr->data);
+		ft_printf(" (%d) ", ptr->data);
 		ptr = ptr->next;
 	}
 }
@@ -39,34 +39,13 @@ struct s_stack *create_node(int data)
 	}
 	else
 	{
-		printf("Error allocating memory");
+		ft_printf("Error allocating memory");
 	}
 	return node;
 }
 
-long int	atoi_ps(const char *str)
-{
-	long int	result;
-	int	sign;
-	int	i;
 
-	sign = 1;
-	result = 0;
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if(str[i++] == '-')
-			sign *= -1;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result  * 10 + (str[i] - 48);
-		i++;
-	}
-	return (sign * result);
-}
-
-struct s_stack *init_stack(int argc, char *argv[])
+struct s_stack *init_stack(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*current;
@@ -101,34 +80,36 @@ struct s_stack *init_stack(int argc, char *argv[])
 			}
 			else
 			{
-				printf("Error Init");
+				ft_printf("Error Init");
 			}
 		}
 		else
 		{
-			printf("Error Convert");
+			ft_printf("Error Convert");
+			break;
 		}
 	}
 	return head;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	struct s_stack	*head;
 
 	if (argc < 2)
 	{
-		printf("not enough arrguments");
+		ft_printf("not enough arrguments");
 		return 1;
 	}
+	check_args(argc, argv);
 	head = init_stack(argc, argv);
 
 	if (head == NULL)
 	{
-		printf("Error Stack init");
+		ft_printf("Error Stack init");
 		return 1;
 	}
-	printf("Stack: ");
+	ft_printf("Stack: ");
 	printstack(head);
 
 	return 0;
