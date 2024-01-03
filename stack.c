@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/02 10:55:43 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:42:37 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	printstack(struct s_stack *head)
 		ft_printf(" (%d) ", ptr->data);
 		ptr = ptr->next;
 	}
+	ft_printf("\n");
 }
 
 struct s_stack *create_node(int data)
@@ -110,6 +111,10 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	ft_printf("Stack: ");
+	printstack(head);
+
+	head = pop(head);
+	ft_printf("after pop: ");
 	printstack(head);
 
 	return 0;

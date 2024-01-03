@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/02 10:56:34 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:38:30 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include "./libft/libft.h"
-
-#define STACK_SIZE 1000
 
 typedef struct s_stack
 {
@@ -54,6 +52,7 @@ int	stackempty(struct s_stack *stack);
 void	printstack(struct s_stack *head);
 struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
+struct s_stack	*pop(struct s_stack *head);
 
 
 #endif
