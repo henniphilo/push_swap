@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/02 11:56:42 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:23:04 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 
 #include "pushswap.h"
 
-static int	check_duplicates(char **argv, int i, int num)
+static int	check_duplicates(char **argv, int index, long num)
 {
-	i = 0;
-	while (argv[i])
+	int	i;
+
+	i = 1;
+	while (i < index)
 	{
-		if ( atoi_ps(argv[i]) == num)
+		if (atoi_ps(argv[i]) == num)
 			return (1);
 		i++;
 	}
@@ -51,10 +53,11 @@ void	check_args(int argc, char **argv)
 {
 	char	**arguments;
 	int	i;
-	int	num;
+	long	num;
 
-	if (argc > 2)
+	if (argc >= 2)
 	{
+		printf("hallo flo");
 		i = 1;
 		arguments = argv;
 		while (arguments[i])
