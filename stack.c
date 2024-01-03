@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/03 15:42:37 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:58:29 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ int main(int argc, char **argv)
 
 	head = pop(head);
 	ft_printf("after pop: ");
+	printstack(head);
+
+	int	newvalue = 42;
+	head = push(head, newvalue);
+	ft_printf("after push: ");
 	printstack(head);
 
 	return 0;
