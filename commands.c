@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/03 15:57:40 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:33:50 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,34 @@ struct s_stack	*push(struct s_stack *head, int data)
 	head->prev = newnode;
 	return (newnode);
 }
-/*
-//swap first 2 elements in stackA
-void	sa(struct s_stack *stackA)
-{
-	int	size;
-	int	top;
 
-	size = stacksize(stackA);
-	if(size >= 2)
+struct s_stack ft_swap(struct s_stack *a, struct s_stack *b)
+{
+	struct s_stack	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+	ft_printf("swap\n");
+	return(tmp);
+}
+
+//swap first 2 elements in stackA
+struct s_stack	*sa(struct s_stack *stackA)
+{
+	struct s_stack	*top;
+	struct s_stack	*next;
+	//int	size;
+
+	//size = stacksize(stackA);
+	if(stackA->next != NULL && stackA->next->prev != NULL)
 	{
 		top = pop(stackA);
 		next = pop(stackA);
 
+		/*push(stackA, next);
+		push(stackA, top);*/
 	}
+	return (0);
+}
 
-} */

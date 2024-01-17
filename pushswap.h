@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/03 15:58:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:23:38 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-/*typedef struct s_Node
-{
-	int	data;
-	struct	t_Node *next;
-}	t_Node;
-
-typedef struct s_Stack
-{
-	t_Node	*top;
-	size_t	size;
-	int		data[STACK_SIZE];
-}	t_Stack; */
 
 //void	pb(t_Stack *stackA, t_Stack *stackB);
 //void	pa(t_Stack *stackA, t_Stack *stackB);
@@ -50,6 +38,7 @@ void	check_args(int argc, char **argv);
 int	stacksize(struct s_stack *stack);
 int	stackempty(struct s_stack *stack);
 void	printstack(struct s_stack *head);
+struct s_stack	*sa(struct s_stack *stackA);
 struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
 struct s_stack	*pop(struct s_stack *head);

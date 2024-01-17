@@ -5,80 +5,130 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/03 13:41:57 by hwiemann         ###   ########.fr       */
+/*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
+/*   Updated: 2024/01/17 12:31:10 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//stacks bilden
-// checken ob elemente valide sind
-// in bereich von int min und max
-// checken nach vorzeichen
-// befehle implementieren
-// dann logik
-
 #include "pushswap.h"
 
-static int	check_duplicates(char **argv, int index, long num)
-{
-	int	i;
+// doubly linked list
 
+
+void	printstack(struct s_stack *head)
+{
+	struct s_stack *ptr = head;
+
+	while (ptr != NULL)
+	{
+		ft_printf(" (%d) ", ptr->data);
+		ptr = ptr->next;
+	}
+	ft_printf("\n");
+}
+
+struct s_stack *create_node(int data)
+{
+	struct s_stack	*node;
+
+	node = (struct s_stack *)malloc(sizeof(struct s_stack));
+	if (node != NULL)
+	{
+		node->data = data;
+		node->next = NULL;
+		node->prev = NULL;
+	}
+	else
+	{
+		ft_printf("Error allocating memory");
+	}
+	return node;
+}
+
+
+struct s_stack *init_stack(int argc, char **argv)
+{
+	struct s_stack	*head;
+	struct s_stack	*current;
+	struct s_stack	*node;
+	int	i;
+	int	value;
+
+	head = NULL;
+	current = NULL;
 	i = 1;
-	while (i < index)
+
+	while (i < argc)
 	{
-		if (atoi_ps(argv[i]) == num)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static int	check_num(char *argument)
-{
-	int	i;
-
-	i = 0;
-	if (argument[i] == '-' || argument[i] == '+')
-		i++;
-	while (argument[i])
-	{
-		if (!(argument[i] >= '0' && argument[i] <= '9'))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	check_args(int argc, char **argv)
-{
-	char	**arguments;
-	int	i;
-	long	num;
-
-	if (argc >= 2)
-	{
-		printf("hallo flo");
-		i = 1;
-		arguments = argv;
-		while (arguments[i])
+		value = atoi_ps(argv[i]);
+		if (value != 0 || (value == 0 && argv[i][0] == '0'))
 		{
-			if(!check_num(arguments[i]))
+			node = create_node(value);
+			if (node != NULL)
 			{
-				ft_printf("not num");
-				exit(-1);
+				if (head == NULL)
+				{
+					head = node;
+					current = head;
+				}
+				else
+				{
+					current->next = node;
+					node->prev = current;
+					current = node;
+				}
+				i++;
 			}
-			num = atoi_ps(arguments[i]);
-			if (num < INT_MIN || num > INT_MAX)
+			else
 			{
-				ft_printf("not in the range");
-				exit(-1);
+				ft_printf("Error Init");
 			}
-			if (check_duplicates(arguments, i, num))
-			{
-				ft_printf("dups");
-				exit(-1);
-			}
-			i++;
+		}
+		else
+		{
+			ft_printf("Error Convert");
+			break;
 		}
 	}
+	return head;
+}
+
+int main(int argc, char **argv)
+{
+	struct s_stack	*head;
+	int	size;
+
+	if (argc < 2)
+	{
+		ft_printf("not enough arrguments");
+		return 1;
+	}
+	check_args(argc, argv);
+	head = init_stack(argc, argv);
+
+	if (head == NULL)
+	{
+		ft_printf("Error Stack init");
+		return 1;
+	}
+	ft_printf("Stack: ");
+	printstack(head);
+
+	size = stacksize(head);
+	ft_printf("stacksize: %d \n", size);
+
+	head = pop(head);
+	ft_printf("after pop: ");
+	printstack(head);
+
+	int	newvalue = 42;
+	head = push(head, newvalue);
+	ft_printf("after push: ");
+	printstack(head);
+
+	//head =	sa(head);
+	ft_printf("after sa: ");
+	//printstack(head);
+
+	return 0;
 }
