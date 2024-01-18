@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/17 12:31:10 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:38:24 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ struct s_stack *init_stack(int argc, char **argv)
 	int	i;
 	int	value;
 
-	head = NULL;
-	current = NULL;
+	head = 0;
+	current = 0;
 	i = 1;
 
 	while (i < argc)
@@ -90,12 +90,19 @@ struct s_stack *init_stack(int argc, char **argv)
 			break;
 		}
 	}
-	return head;
+	return(head);
 }
+
+struct s_stack *init_empty_stack(void)
+{
+	return(NULL);
+}
+
 
 int main(int argc, char **argv)
 {
 	struct s_stack	*head;
+	struct s_stack	*stackB;
 	int	size;
 
 	if (argc < 2)
@@ -116,19 +123,40 @@ int main(int argc, char **argv)
 
 	size = stacksize(head);
 	ft_printf("stacksize: %d \n", size);
+	printf("data: %d\n", head->data);
+	int	first = head->data;
+
 
 	head = pop(head);
-	ft_printf("after pop: ");
+	ft_printf("after pop A: ");
 	printstack(head);
+	printf("data A: %d\n", head->data);
 
-	int	newvalue = 42;
-	head = push(head, newvalue);
-	ft_printf("after push: ");
+	size = stacksize(head);
+	ft_printf("stacksize A: %d \n", size);
+
+	head = push(head, first);
+	ft_printf("after push A: ");
 	printstack(head);
+	printf("data A: %d\n", head->data);
 
-	//head =	sa(head);
-	ft_printf("after sa: ");
-	//printstack(head);
+	size = stacksize(head);
+	ft_printf("stacksize A: %d \n", size);
+
+	stackB = init_empty_stack();
+	ft_printf("Stack B: ");
+	printstack(stackB);
+
+	head = pb(head, stackB);
+	ft_printf("A after pb: ");
+	printstack(head);
+	printf("data A: %d\n", head->data);
+
+	size = stacksize(head);
+	ft_printf("stacksize A: %d \n", size);
+
+	ft_printf("Stack B: ");
+	printstack(stackB);
 
 	return 0;
 }

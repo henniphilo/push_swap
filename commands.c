@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/17 12:33:50 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:39:16 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,30 @@ struct s_stack ft_swap(struct s_stack *a, struct s_stack *b)
 	return(tmp);
 }
 
+// pb | push the first element of stack a to the top of stack b
+
+struct s_stack	*pb(struct s_stack *stackA, struct s_stack *stackB)
+{
+	int	firstelement;
+
+	if(stackA == NULL)
+	{
+		ft_printf("StackA is empty");
+		return(stackB);
+	}
+
+	firstelement = stackA->data;
+	stackB = push(stackA, firstelement);
+
+	ft_printf("pb");
+	return(pop(stackA));
+}
+
+
+/*
 //swap first 2 elements in stackA
 struct s_stack	*sa(struct s_stack *stackA)
 {
-	struct s_stack	*top;
-	struct s_stack	*next;
-	//int	size;
 
-	//size = stacksize(stackA);
-	if(stackA->next != NULL && stackA->next->prev != NULL)
-	{
-		top = pop(stackA);
-		next = pop(stackA);
-
-		/*push(stackA, next);
-		push(stackA, top);*/
-	}
-	return (0);
-}
+} */
 
