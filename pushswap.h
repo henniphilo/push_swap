@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/18 19:16:09 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:49:29 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
 struct s_stack	*pop(struct s_stack *head);
 struct s_stack	*push(struct s_stack *head, int data);
-struct s_stack	*pb(struct s_stack *stackA, struct s_stack *stackB);
+struct s_stack	*pb(struct s_stack *stackA, struct s_stack **stackB);
 
 
 #endif

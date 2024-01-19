@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/18 19:38:24 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:50:59 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int main(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*stackB;
+
 	int	size;
 
 	if (argc < 2)
@@ -138,7 +139,7 @@ int main(int argc, char **argv)
 	head = push(head, first);
 	ft_printf("after push A: ");
 	printstack(head);
-	printf("data A: %d\n", head->data);
+	ft_printf("data A: %d\n", head->data);
 
 	size = stacksize(head);
 	ft_printf("stacksize A: %d \n", size);
@@ -147,7 +148,7 @@ int main(int argc, char **argv)
 	ft_printf("Stack B: ");
 	printstack(stackB);
 
-	head = pb(head, stackB);
+	head = pb(head, &stackB);
 	ft_printf("A after pb: ");
 	printstack(head);
 	printf("data A: %d\n", head->data);
