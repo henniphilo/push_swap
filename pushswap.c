@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/19 12:50:59 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:36:54 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,16 +148,34 @@ int main(int argc, char **argv)
 	ft_printf("Stack B: ");
 	printstack(stackB);
 
-	head = pb(head, &stackB);
+	head = push_stack(head, &stackB);
 	ft_printf("A after pb: ");
 	printstack(head);
-	printf("data A: %d\n", head->data);
 
 	size = stacksize(head);
 	ft_printf("stacksize A: %d \n", size);
 
+	stackB = push(stackB, 9);
+
 	ft_printf("Stack B: ");
 	printstack(stackB);
+	size = stacksize(stackB);
+	ft_printf("stacksize B: %d \n", size);
+
+	stackB = push_stack(stackB, &head);
+	ft_printf("Stack B: ");
+	printstack(stackB);
+	size = stacksize(stackB);
+	ft_printf("stacksize B: %d \n", size);
+
+	ft_printf("after pb A: ");
+	printstack(head);
+	ft_printf("data A: %d\n", head->data);
+
+	size = stacksize(head);
+	ft_printf("stacksize A: %d \n", size);
+
+
 
 	return 0;
 }
