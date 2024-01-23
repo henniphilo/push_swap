@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/19 17:36:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:56:58 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ struct s_stack *init_empty_stack(void)
 	return(NULL);
 }
 
+struct s_stack	*swap_stack(struct s_stack *stack);
+
 
 int main(int argc, char **argv)
 {
@@ -175,7 +177,9 @@ int main(int argc, char **argv)
 	size = stacksize(head);
 	ft_printf("stacksize A: %d \n", size);
 
+	head = swap_stack(head);
+	ft_printf("after swap A: ");
+	printstack(head);
 
-
-	return 0;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/19 17:37:37 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:53:13 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,35 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 	ft_printf("pb\n");
 	return(stack_from);
 }
+
+struct s_stack	*swap_stack(struct s_stack *stack)
+{
+	int	firstelement;
+	int	secondelement;
+
+	if(stack == NULL)
+	{
+		ft_printf("Stack is empty no swapping");
+		return(NULL);
+	}
+
+	firstelement = stack->data;
+	stack = pop(stack);
+	if(stack == NULL)
+	{
+		ft_printf("Stack has not enaugh elements to swap");
+		return(NULL);
+	}
+	secondelement = stack->data;
+	stack = pop(stack);
+
+	stack = push(stack, firstelement);
+	stack = push(stack, secondelement);
+
+	ft_printf("swap\n");
+	return(stack);
+}
+
 
 
 /*
