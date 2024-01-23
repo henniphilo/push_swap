@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/23 16:42:03 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:06:32 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,11 @@ struct s_stack	*rotate_stack(struct s_stack *stack)
 
 struct s_stack *rota_stack(struct s_stack *stack)
 {
-	struct s_stack	*current = stack;
-	struct s_stack	*new_top = stack->next;
+	struct s_stack	*current;
+	struct s_stack	*new_top;
+
+	current = stack;
+	new_top = stack->next;
 
 	if(stack == NULL || stack->next == NULL)
 	{
@@ -166,4 +169,32 @@ struct s_stack *rota_stack(struct s_stack *stack)
 
 	return(new_top);
 }
+
+//reverse rotation move the last element to the top
+
+struct s_stack *reverse_rotation(struct s_stack *stack)
+{
+	struct s_stack	*last;
+	struct s_stack	*top;
+
+	top = NULL;
+	last = stack;
+
+	if(stack == NULL || stack->next == NULL)
+	{
+		ft_printf("stack empty no reverse rota");
+		return(stack);
+	}
+
+	while(last->next != NULL)
+	{
+		top = last;
+		last = last->next;
+	}
+	top->next = NULL;
+	last->next = stack;
+
+	return(last);
+}
+
 
