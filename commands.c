@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/23 10:53:13 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:42:03 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ struct s_stack ft_swap(struct s_stack *a, struct s_stack *b)
 	return(tmp);
 }
 
-// pb | push the first element of stack a to the top of stack b
+//push the first element of a stack to the top of second stack
 
 struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to)
 {
@@ -77,9 +77,11 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 	stack_from = pop(stack_from);
 	*stack_to = push(*stack_to, firstelement);
 
-	ft_printf("pb\n");
+	ft_printf("push\n");
 	return(stack_from);
 }
+
+//swapping the first to elements of a stack
 
 struct s_stack	*swap_stack(struct s_stack *stack)
 {
@@ -109,12 +111,59 @@ struct s_stack	*swap_stack(struct s_stack *stack)
 	return(stack);
 }
 
-
-
+//rotate stack moves first element to the bottom
 /*
-//swap first 2 elements in stackA
-struct s_stack	*sa(struct s_stack *stackA)
+struct s_stack	*rotate_stack(struct s_stack *stack)
 {
+	int	firstelement;
+	int	size;
+	int	i;
+	int	data;
 
+	if (stack == NULL || stack->next == NULL)
+	{
+		ft_printf("stack empty, no rotation possible");
+		return(0);
+	}
+
+	firstelement = stack->data;
+	stack = pop(stack);
+	size = stacksize(stack);
+
+	ft_printf("stack size during rotate: %d\n", size);
+
+	stack = push(stack, firstelement);
+	if(size > 1)
+	{
+		i = 0;
+		while(i < size + 1)
+		{
+			data = stack->data;
+			stack = pop(stack);
+			stack = push(stack, data);
+			i++;
+		}
+	}
+	return(stack);
 } */
+
+struct s_stack *rota_stack(struct s_stack *stack)
+{
+	struct s_stack	*current = stack;
+	struct s_stack	*new_top = stack->next;
+
+	if(stack == NULL || stack->next == NULL)
+	{
+		ft_printf("no rotation possible");
+		return(stack);
+	}
+	while(current->next != NULL)
+	{
+		current = current->next;
+	}
+	stack->next = NULL;
+	current->next = stack;
+
+	return(new_top);
+}
 

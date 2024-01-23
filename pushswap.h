@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/23 10:55:07 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:19:52 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ struct s_stack	*pop(struct s_stack *head);
 struct s_stack	*push(struct s_stack *head, int data);
 struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to);
 struct s_stack	*swap_stack(struct s_stack *stack);
+struct s_stack	*rotate_stack(struct s_stack *stack);
+struct s_stack *rota_stack(struct s_stack *stack);
 
 
 #endif
