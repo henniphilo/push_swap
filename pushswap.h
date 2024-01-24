@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/23 17:05:43 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:37:52 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,36 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-
-//void	pb(t_Stack *stackA, t_Stack *stackB);
-//void	pa(t_Stack *stackA, t_Stack *stackB);
-//void	sa(t_Stack *stackA);
 long int	atoi_ps(const char *str);
 void	check_args(int argc, char **argv);
 
-
-//int	pop(t_Stack *stack);
 int	stacksize(struct s_stack *stack);
 int	stackempty(struct s_stack *stack);
+int	check_sort(struct s_stack *stack);
+
 void	printstack(struct s_stack *head);
-struct s_stack	*sa(struct s_stack *stackA);
 struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
 struct s_stack	*pop(struct s_stack *head);
 struct s_stack	*push(struct s_stack *head, int data);
 struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to);
 struct s_stack	*swap_stack(struct s_stack *stack);
-struct s_stack	*rotate_stack(struct s_stack *stack);
+//struct s_stack	*rotate_stack(struct s_stack *stack);
 struct s_stack *rota_stack(struct s_stack *stack);
 struct s_stack *reverse_rotation(struct s_stack *stack);
+
+int	pa(struct s_stack *stack_a, struct s_stack *stack_b);
+int	pb(struct s_stack *stack_a, struct s_stack *stack_b);
+int	sa(struct s_stack *stack_a);
+int	sb(struct s_stack *stack_b);
+int	ss(struct s_stack *stack_a, struct s_stack *stack_b);
+int	ra(struct s_stack *stack_a);
+int	rb(struct s_stack *stack_b);
+int	rr(struct s_stack *stack_a, struct s_stack *stack_b);
+int	rra(struct s_stack *stack_a);
+int	rrb(struct s_stack *stack_b);
+int	rrr(struct s_stack *stack_a, struct s_stack *stack_b);
+
 
 
 #endif

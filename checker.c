@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/17 12:53:38 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:19:56 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 // checken nach vorzeichen
 // befehle implementieren
 // dann logik
+
+//checke ob es schon sortiert ist!
 
 #include "pushswap.h"
 
@@ -47,6 +49,22 @@ static int	check_num(char *argument)
 		i++;
 	}
 	return (1);
+}
+
+// check if sorted
+
+int	check_sort(struct s_stack *stack)
+{
+	struct s_stack	*head;
+
+	head = stack;
+	while(head && head->next)
+	{
+		if(head->data > head->next->data)
+			return(0);
+		head = head->next;
+	}
+	return(1);
 }
 
 void	check_args(int argc, char **argv)
@@ -83,6 +101,3 @@ void	check_args(int argc, char **argv)
 	}
 }
 
-// check if sorted
-
-//
