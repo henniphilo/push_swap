@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/24 12:37:52 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:58:35 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	check_args(int argc, char **argv);
 int	stacksize(struct s_stack *stack);
 int	stackempty(struct s_stack *stack);
 int	check_sort(struct s_stack *stack);
+int	find_min(struct s_stack *stack);
 
 void	printstack(struct s_stack *head);
 struct s_stack *init_stack(int argc, char **argv);

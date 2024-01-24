@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/24 12:19:56 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:06:27 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,22 @@ static int	check_num(char *argument)
 	return (1);
 }
 
-// check if sorted
-
+//funzt noch nicht so wie ich denke
 int	check_sort(struct s_stack *stack)
 {
 	struct s_stack	*head;
 
 	head = stack;
-	while(head && head->next)
+	while(head->next)
 	{
 		if(head->data > head->next->data)
-			return(0);
+			{
+				ft_printf("stack is sorted\n");
+				return(0);
+			}
 		head = head->next;
 	}
+	ft_printf("stack not sorted\n");
 	return(1);
 }
 

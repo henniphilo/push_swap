@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/23 17:05:27 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:04:12 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ int main(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*stackB;
-
+	int	first;
+	int	min;
 	int	size;
 
 	if (argc < 2)
@@ -123,12 +124,13 @@ int main(int argc, char **argv)
 	}
 	ft_printf("Stack: ");
 	printstack(head);
+	check_sort(head);
+	min = find_min(head);
+	ft_printf("kleinstes element ist: %d\n", min);
 
 	size = stacksize(head);
 	ft_printf("stacksize: %d \n", size);
 	printf("data: %d\n", head->data);
-	int	first = head->data;
-
 
 	head = pop(head);
 	ft_printf("after pop A: ");
@@ -138,6 +140,7 @@ int main(int argc, char **argv)
 	size = stacksize(head);
 	ft_printf("stacksize A: %d \n", size);
 
+	first = head->data;
 	head = push(head, first);
 	ft_printf("after push A: ");
 	printstack(head);
