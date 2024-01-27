@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/24 15:58:35 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:28:24 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,23 @@ struct s_stack *create_node(int data);
 struct s_stack	*pop(struct s_stack *head);
 struct s_stack	*push(struct s_stack *head, int data);
 struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to);
-struct s_stack	*swap_stack(struct s_stack *stack);
+struct s_stack	*swap_stack(struct s_stack **stack);
 //struct s_stack	*rotate_stack(struct s_stack *stack);
-struct s_stack *rota_stack(struct s_stack *stack);
-struct s_stack *reverse_rotation(struct s_stack *stack);
+struct s_stack *rota_stack(struct s_stack **head);
+struct s_stack *reverse_rotation(struct s_stack **stack);
+struct s_stack	*sort(struct s_stack *stack_a, struct s_stack *stack_b);
 
-int	pa(struct s_stack *stack_a, struct s_stack *stack_b);
-int	pb(struct s_stack *stack_a, struct s_stack *stack_b);
-int	sa(struct s_stack *stack_a);
-int	sb(struct s_stack *stack_b);
-int	ss(struct s_stack *stack_a, struct s_stack *stack_b);
-int	ra(struct s_stack *stack_a);
-int	rb(struct s_stack *stack_b);
-int	rr(struct s_stack *stack_a, struct s_stack *stack_b);
-int	rra(struct s_stack *stack_a);
-int	rrb(struct s_stack *stack_b);
-int	rrr(struct s_stack *stack_a, struct s_stack *stack_b);
+int	pa(struct s_stack **stack_a, struct s_stack **stack_b);
+int	pb(struct s_stack **stack_a, struct s_stack **stack_b);
+int	sa(struct s_stack **stack_a);
+int	sb(struct s_stack **stack_b);
+int	ss(struct s_stack **stack_a, struct s_stack **stack_b);
+int	ra(struct s_stack **stack_a);
+int	rb(struct s_stack **stack_b);
+int	rr(struct s_stack **stack_a, struct s_stack **stack_b);
+int	rra(struct s_stack **stack_a);
+int	rrb(struct s_stack **stack_b);
+int	rrr(struct s_stack **stack_a, struct s_stack **stack_b);
 
 
 

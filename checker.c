@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/26 10:42:11 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:15:59 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_args(int argc, char **argv)
 
 	if (argc >= 2)
 	{
-		printf("hallo flo");
+		ft_printf("hallo flo\n");
 		i = 1;
 		arguments = argv;
 		while (arguments[i])

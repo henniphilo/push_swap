@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/24 16:04:12 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:31:27 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,13 @@ struct s_stack *init_empty_stack(void)
 	return(NULL);
 }
 
-struct s_stack	*swap_stack(struct s_stack *stack);
-
-
 int main(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*stackB;
-	int	first;
-	int	min;
-	int	size;
+	// int	first;
+	// int	min;
+	// int	size;
 
 	if (argc < 2)
 	{
@@ -122,75 +119,116 @@ int main(int argc, char **argv)
 		ft_printf("Error Stack init");
 		return 1;
 	}
-	ft_printf("Stack: ");
-	printstack(head);
-	check_sort(head);
-	min = find_min(head);
-	ft_printf("kleinstes element ist: %d\n", min);
-
-	size = stacksize(head);
-	ft_printf("stacksize: %d \n", size);
-	printf("data: %d\n", head->data);
-
-	head = pop(head);
-	ft_printf("after pop A: ");
-	printstack(head);
-	printf("data A: %d\n", head->data);
-
-	size = stacksize(head);
-	ft_printf("stacksize A: %d \n", size);
-
-	first = head->data;
-	head = push(head, first);
-	ft_printf("after push A: ");
-	printstack(head);
-	ft_printf("data A: %d\n", head->data);
-
-	size = stacksize(head);
-	ft_printf("stacksize A: %d \n", size);
+ 	ft_printf("Stack A: ");
+ 	printstack(head);
+// 	check_sort(head);
+// 	min = find_min(head);
+// 	ft_printf("kleinstes element ist: %d\n", min);
+// 	size = stacksize(head);
+// 	ft_printf("stacksize A: %d \n", size);
 
 	stackB = init_empty_stack();
+	//sort(head, stackB);
 	ft_printf("Stack B: ");
-	printstack(stackB);
+ 	printstack(stackB);
+// 	// size = stacksize(stackB);
+// //	ft_printf("stacksize B: %d \n", size);
 
-	head = push_stack(head, &stackB);
-	ft_printf("A after pb: ");
-	printstack(head);
+//	 sort(head, stackB);
+// 	// pb(&head, &stackB);
+// 	ft_printf("Stack B nach pb funktion: ");
+// 	printstack(stackB);
 
-	size = stacksize(head);
-	ft_printf("stacksize A: %d \n", size);
+// 	ft_printf("Stack A nach pb fkt: ");
+// 	printstack(head);
+// //	check_sort(head);
 
-	stackB = push(stackB, 9);
+// 	size = stacksize(head);
+// 	ft_printf("stacksize A nach pb: %d \n", size);
 
-	ft_printf("Stack B: ");
-	printstack(stackB);
-	size = stacksize(stackB);
-	ft_printf("stacksize B: %d \n", size);
+// 	min = find_min(head);
+// 	ft_printf("min ist gerade: %d\n", min);
 
-	stackB = push_stack(stackB, &head);
-	ft_printf("Stack B: ");
-	printstack(stackB);
-	size = stacksize(stackB);
-	ft_printf("stacksize B: %d \n", size);
+// size = stacksize(head);
+// 	ft_printf("stacksize: %d \n", size);
+// 	printf("data: %d\n", head->data);
 
-	ft_printf("after pb A: ");
-	printstack(head);
-	ft_printf("data A: %d\n", head->data);
+// 	head = pop(head);
+// 	ft_printf("after pop A: ");
+// 	printstack(head);
+// 	//segementation fault kommt wenn pop aber stack eigentlich leer ist
+// 	printf("data A: %d\n", head->data);
+
+// 	size = stacksize(head);
+// 	ft_printf("stacksize A: %d \n", size);
+
+// 	first = head->data;
+// 	head = push(head, first);
+// 	ft_printf("after push A: ");
+// 	printstack(head);
+// 	ft_printf("data A: %d\n", head->data);
+
+// 	size = stacksize(head);
+// 	ft_printf("stacksize A: %d \n", size);
+
+// 	stackB = init_empty_stack();
+// 	ft_printf("Stack B: ");
+// 	printstack(stackB);
+
+// 	head = push_stack(head, &stackB);
+// 	ft_printf("A after pb: ");
+// 	printstack(head);
+
+// 	size = stacksize(head);
+// 	ft_printf("stacksize A: %d \n", size);
+
+// 	stackB = push(stackB, 9);
+
+// 	ft_printf("Stack B: ");
+// 	printstack(stackB);
+// 	size = stacksize(stackB);
+// 	ft_printf("stacksize B: %d \n", size);
+
+// 	stackB = push_stack(stackB, &head);
+// 	ft_printf("Stack B: ");
+// 	printstack(stackB);
+// 	size = stacksize(stackB);
+// 	ft_printf("stacksize B: %d \n", size);
+
+// 	ft_printf("after pb A: ");
+// 	printstack(head);
+	/*ft_printf("data A: %d\n", head->data);
 
 	size = stacksize(head);
 	ft_printf("stacksize A: %d \n", size);
 
 	head = swap_stack(head);
 	ft_printf("after swap A: ");
-	printstack(head);
+	printstack(head);*/
 
-	head = rota_stack(head);
+	/* head = rota_stack(head);
+	ft_printf("after rotate A: ");
+	printstack(head);
+ */
+	//head = rota_stack(head);
+	//ft_printf("after rotate A: ");
+	//printstack(head);
+//ra killt meinen stack und ich weiss nicht wieso
+	ra(&head);
 	ft_printf("after rotate A: ");
 	printstack(head);
 
-	head = reverse_rotation(head);
+	head = reverse_rotation(&head);
 	ft_printf("after reverse rotate A: ");
+	printstack(head);
+
+	rra(&head);
+	ft_printf("after rra: ");
 	printstack(head);
 
 	return (0);
 }
+
+
+
+
