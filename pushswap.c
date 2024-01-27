@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/27 16:31:27 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:35:16 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int main(int argc, char **argv)
 // 	ft_printf("stacksize A: %d \n", size);
 
 	stackB = init_empty_stack();
-	//sort(head, stackB);
+	sort(head, stackB);
 	ft_printf("Stack B: ");
  	printstack(stackB);
 // 	// size = stacksize(stackB);

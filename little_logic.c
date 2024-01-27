@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/27 16:22:29 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:41:44 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	find_min(struct s_stack *stack)
 
 struct s_stack	*sort(struct s_stack *stack_a, struct s_stack *stack_b)
 {
-	//struct s_stack	*head;
-	// int	min;
+	struct s_stack	*head;
+	 int	min;
 
 	/*if(check_sort(stack_a))
 	{
@@ -50,27 +50,29 @@ struct s_stack	*sort(struct s_stack *stack_a, struct s_stack *stack_b)
 	// pb(&stack_a, &stack_b);
 
 
-	ra(&stack_a);
+//	ra(&stack_a);
 
-/* 	while(stack_a)
+	while(stack_a)
 	{
 		min = find_min(stack_a);
 
-		while (stack_a->data != min)
-			ra(stack_a);
-		pb(&stack_a, &stack_b);
+	 while (stack_a->data != min)
+	 {
+		// 	ra(&stack_a);
+		// pb(&stack_a, &stack_b);
 
-		// if(stack_a->data == min)
-		// {
-		// 	ft_printf("data is: %i\n", head->data);
-		// 	if (pb(&head, &stack_b) == 1)
-		// 		ft_printf("error in push_b\n");
-		// 	break;
-		// }
-		// ft_printf("moving to next element\n");
-		// // head = head->next;
+		if(stack_a->data == min)
+		{
+			ft_printf("data is: %i\n", head->data);
+			if (pb(&head, &stack_b) == 1)
+				ft_printf("error in push_b\n");
+			break;
+		}
+		ft_printf("moving to next element\n");
+		 head = head->next;
 		// ra(head);
-	} */
+	 }
+	}
 	printstack(stack_a);
 	return(stack_b);
 }

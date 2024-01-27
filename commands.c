@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/27 16:32:01 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:37:52 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	pb(struct s_stack **stack_a, struct s_stack **stack_b)
 	if(*stack_a != NULL)
 		return(1);
 	ft_printf("pb\n");
-	ft_putendl_fd("pb", 1);
+//	ft_putendl_fd("pb", 1);
 	return(0);
 }
 
@@ -144,7 +144,7 @@ int	sa(struct s_stack **stack_a)
 	if(swap_stack(stack_a) != 0)
 		return(1);
 	ft_printf("sa");
-	ft_putendl_fd("sa", 1);
+	//ft_putendl_fd("sa", 1);
 	return(0);
 }
 
@@ -153,7 +153,7 @@ int	sb(struct s_stack **stack_b)
 	if(swap_stack(stack_b) != 0)
 		return(1);
 	ft_printf("sb");
-	ft_putendl_fd("sb", 1);
+	//ft_putendl_fd("sb", 1);
 	return(0);
 }
 
@@ -162,7 +162,7 @@ int	ss(struct s_stack **stack_a, struct s_stack **stack_b)
 	swap_stack(stack_a);
 	swap_stack(stack_b);
 	ft_printf("ss");
-	ft_putendl_fd("ss", 1);
+//	ft_putendl_fd("ss", 1);
 	return(0);
 }
 
