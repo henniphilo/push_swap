@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/29 19:00:32 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:22:01 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_min(struct s_stack *stack)
 }
 
 //needs restructure to void
-struct s_stack	*sort(struct s_stack *stack_a, struct s_stack *stack_b)
+void	*sort(struct s_stack *stack_a, struct s_stack *stack_b)
 {
 	struct s_stack	*head = stack_a;
 
@@ -44,29 +44,22 @@ struct s_stack	*sort(struct s_stack *stack_a, struct s_stack *stack_b)
 	if(!(check_sort(stack_a)))
 	{
 		ft_printf("stack is already sorted");
-		return(stack_a);
 	}
 	ft_printf("kleinstes element: >%d<\n", find_min(stack_a));
 
-	while(stack_a->next != NULL)
+	while(head->next != NULL)
 	{
 	 while (!(head->data == find_min(head)))
 	 {
 		ra(&head);
 	 }
-		ft_printf("data is: %i\n", head->data);
+	ft_printf("data is: %i\n", head->data);
 			if (pb(&head, &stack_b) == 1)
 			{
 				ft_printf("error in push_b\n");
 				break;
 			}
 		ft_printf("moving to next element\n");
-		// ra(head);
 	 }
-	// ft_printf("Stack A after sort: ");
-	// printstack(stack_a);
-	// ft_printf("Stack B after sort: ");
- 	// printstack(stack_b);
-	return(stack_b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/27 16:28:24 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:20:01 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ struct s_stack	*swap_stack(struct s_stack **stack);
 //struct s_stack	*rotate_stack(struct s_stack *stack);
 struct s_stack *rota_stack(struct s_stack **head);
 struct s_stack *reverse_rotation(struct s_stack **stack);
-struct s_stack	*sort(struct s_stack *stack_a, struct s_stack *stack_b);
+void	*sort(struct s_stack *stack_a, struct s_stack *stack_b);
 
 int	pa(struct s_stack **stack_a, struct s_stack **stack_b);
 int	pb(struct s_stack **stack_a, struct s_stack **stack_b);
