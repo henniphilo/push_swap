@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/27 16:37:52 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:20:50 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 	stack_from = pop(stack_from);
 	*stack_to = push(*stack_to, firstelement);
 
-//	ft_printf("push\n");
+	ft_printf("%d was pushed\n", (*stack_to)->data);
+	printstack(stack_from);
+	printstack(*stack_to);
 	return(stack_from);
 }
 
@@ -98,8 +100,8 @@ int	pa(struct s_stack **stack_a, struct s_stack **stack_b)
 int	pb(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	*stack_a = push_stack(*stack_a, stack_b);
-	if(*stack_a != NULL)
-		return(1);
+/*	if(*stack_a != NULL)
+		return(1);*/
 	ft_printf("pb\n");
 //	ft_putendl_fd("pb", 1);
 	return(0);

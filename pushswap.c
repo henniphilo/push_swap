@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/27 16:35:16 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:41:07 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,14 +128,27 @@ int main(int argc, char **argv)
 // 	ft_printf("stacksize A: %d \n", size);
 
 	stackB = init_empty_stack();
-	sort(head, stackB);
-	ft_printf("Stack B: ");
+
+ 	// stackB = push(stackB, 6);
+ 	// stackB = push(stackB, 5);
+	// ft_printf("Stack A after pushing 6: ");
+ 	// printstack(head);
+	// ft_printf("Stack B: ");
+ 	// printstack(stackB);
+
+	ft_printf("sort happening: \n");
+	stackB = sort(head, stackB);
+		ft_printf("sort over \n");
+	ft_printf("Stack A after sort: ");
+	printstack(head);
+	ft_printf("Stack B after sort: ");
  	printstack(stackB);
+
 // 	// size = stacksize(stackB);
 // //	ft_printf("stacksize B: %d \n", size);
 
 //	 sort(head, stackB);
-// 	// pb(&head, &stackB);
+//  pb(&head, &stackB);
 // 	ft_printf("Stack B nach pb funktion: ");
 // 	printstack(stackB);
 
@@ -175,17 +188,16 @@ int main(int argc, char **argv)
 // 	ft_printf("Stack B: ");
 // 	printstack(stackB);
 
-// 	head = push_stack(head, &stackB);
-// 	ft_printf("A after pb: ");
-// 	printstack(head);
+ 	// head = push_stack(head, &stackB);
+ 	// ft_printf("A after pushstack: ");
+	// printstack(head);
 
 // 	size = stacksize(head);
 // 	ft_printf("stacksize A: %d \n", size);
 
-// 	stackB = push(stackB, 9);
 
-// 	ft_printf("Stack B: ");
-// 	printstack(stackB);
+ 	// ft_printf("Stack B after pushstack: ");
+ 	// printstack(stackB);
 // 	size = stacksize(stackB);
 // 	ft_printf("stacksize B: %d \n", size);
 
@@ -213,18 +225,19 @@ int main(int argc, char **argv)
 	//head = rota_stack(head);
 	//ft_printf("after rotate A: ");
 	//printstack(head);
-//ra killt meinen stack und ich weiss nicht wieso
-	ra(&head);
-	ft_printf("after rotate A: ");
-	printstack(head);
 
-	head = reverse_rotation(&head);
-	ft_printf("after reverse rotate A: ");
-	printstack(head);
 
-	rra(&head);
-	ft_printf("after rra: ");
-	printstack(head);
+	// ra(&head);
+	// ft_printf("after rotate A: ");
+	// printstack(head);
+
+	// head = reverse_rotation(&head);
+	// ft_printf("after reverse rotate A: ");
+	// printstack(head);
+
+	// rra(&head);
+	// ft_printf("after rra: ");
+	// printstack(head);
 
 	return (0);
 }
