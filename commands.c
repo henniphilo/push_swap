@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 11:43:35 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 12:34:26 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 	stack_from = pop(stack_from);
 	*stack_to = push(*stack_to, firstelement);
 
-	ft_printf(">%d< was pushed\n", (*stack_to)->data);
-	printstack(stack_from);
-	printstack(*stack_to);
+//	ft_printf(">%d< was pushed\n", (*stack_to)->data);
+	// printstack(stack_from);
+	// printstack(*stack_to);
 	return(stack_from);
 }
 
