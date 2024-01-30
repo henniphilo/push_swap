@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 10:34:38 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:34:48 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,15 @@ int main(int argc, char **argv)
  	// printstack(stackB);
 
 	ft_printf("sort happening: \n");
-	sort(head, stackB);
+	sort(&head, &stackB);
 		ft_printf("sort over \n");
-	ft_printf("Stack A after sort: ");
+
+	ft_printf("Stack A after sort function: ");
 	printstack(head);
-	ft_printf("Stack B after sort: ");
+	ft_printf("Stack B after sort function: ");
  	printstack(stackB);
+
+	sort_back(head, stackB);
 
 // 	// size = stacksize(stackB);
 // //	ft_printf("stacksize B: %d \n", size);

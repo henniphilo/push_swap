@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 10:31:08 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:39:49 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b)
 	/*if(*stack_b != NULL)
 		return(1);*/
 	ft_printf("pa");
-	ft_putendl_fd("pa", 1);
+	//ft_putendl_fd("pa", 1);
 	return(*stack_b);
 }
 
@@ -106,7 +106,6 @@ struct s_stack	*pb(struct s_stack **stack_a, struct s_stack **stack_b)
 //	ft_putendl_fd("pb", 1);
 	return(*stack_a);
 }
-
 
 //swapping the first to elements of a stack
 
@@ -169,40 +168,6 @@ int	ss(struct s_stack **stack_a, struct s_stack **stack_b)
 }
 
 //rotate stack moves first element to the bottom
-/*
-struct s_stack	*rotate_stack(struct s_stack *stack)
-{
-	int	firstelement;
-	int	size;
-	int	i;
-	int	data;
-
-	if (stack == NULL || stack->next == NULL)
-	{
-		ft_printf("stack empty, no rotation possible");
-		return(0);
-	}
-
-	firstelement = stack->data;
-	stack = pop(stack);
-	size = stacksize(stack);
-
-	ft_printf("stack size during rotate: %d\n", size);
-
-	stack = push(stack, firstelement);
-	if(size > 1)
-	{
-		i = 0;
-		while(i < size + 1)
-		{
-			data = stack->data;
-			stack = pop(stack);
-			stack = push(stack, data);
-			i++;
-		}
-	}
-	return(stack);
-} */
 
 struct s_stack *rota_stack(struct s_stack **head)
 {
