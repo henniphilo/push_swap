@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 11:34:48 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:54:33 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,6 @@ int main(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*stackB;
-	// int	first;
-	// int	min;
-	// int	size;
 
 	if (argc < 2)
 	{
@@ -121,31 +118,30 @@ int main(int argc, char **argv)
 	}
  	ft_printf("Stack A: ");
  	printstack(head);
-// 	check_sort(head);
-// 	min = find_min(head);
-// 	ft_printf("kleinstes element ist: %d\n", min);
-// 	size = stacksize(head);
-// 	ft_printf("stacksize A: %d \n", size);
+ 	if((check_sort(head)) == 1)
+	{
+		stackB = init_empty_stack();
+		ft_printf("sort happening: \n");
+		little_logic(head, stackB);
+		ft_printf("sort over \n");
+	}
+	return (0);
+}
 
-	stackB = init_empty_stack();
-
- 	// stackB = push(stackB, 6);
+	// sort(&head, &stackB);
+// stackB = push(stackB, 6);
  	// stackB = push(stackB, 5);
 	// ft_printf("Stack A after pushing 6: ");
  	// printstack(head);
 	// ft_printf("Stack B: ");
  	// printstack(stackB);
 
-	ft_printf("sort happening: \n");
-	sort(&head, &stackB);
-		ft_printf("sort over \n");
-
-	ft_printf("Stack A after sort function: ");
+	/*ft_printf("Stack A after sort function: ");
 	printstack(head);
 	ft_printf("Stack B after sort function: ");
- 	printstack(stackB);
+ 	printstack(stackB);*/
 
-	sort_back(head, stackB);
+	//sort_back(head, stackB);
 
 // 	// size = stacksize(stackB);
 // //	ft_printf("stacksize B: %d \n", size);
@@ -241,9 +237,6 @@ int main(int argc, char **argv)
 	// rra(&head);
 	// ft_printf("after rra: ");
 	// printstack(head);
-
-	return (0);
-}
 
 
 

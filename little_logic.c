@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 11:34:05 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:47:00 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,9 @@ int	find_min(struct s_stack *stack)
 	return(min);
 }
 
-//needs restructure to void
 void	sort(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	// struct s_stack	*head;
 	int	min;
-
-	// head = *stack_a;
 
 	ft_printf("kleinstes element: >%d<\n", find_min(*stack_a));
 
@@ -77,3 +73,8 @@ void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b)
  	printstack(stack_b);
 }
 
+void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b)
+{
+	sort(&stack_a, &stack_b);
+	sort_back(stack_a, stack_b);
+}
