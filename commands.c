@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/29 19:24:58 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 10:31:08 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,26 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 
 //pa | push the first element of stack b to the top of stack a
 
-int	pa(struct s_stack **stack_a, struct s_stack **stack_b)
+struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	*stack_b = push_stack(*stack_b, stack_a);
-	if(*stack_b != NULL)
-		return(1);
+	/*if(*stack_b != NULL)
+		return(1);*/
 	ft_printf("pa");
 	ft_putendl_fd("pa", 1);
-	return(0);
+	return(*stack_b);
 }
 
 // pb | push the first element of stack a to the top of stack b
 
-int	pb(struct s_stack **stack_a, struct s_stack **stack_b)
+struct s_stack	*pb(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	*stack_a = push_stack(*stack_a, stack_b);
 /*	if(*stack_a != NULL)
 		return(1);*/
 	ft_printf("pb\n");
 //	ft_putendl_fd("pb", 1);
-	return(0);
+	return(*stack_a);
 }
 
 
