@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 12:35:17 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:28:51 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,20 @@ int main(int argc, char **argv)
 	}
  	// ft_printf("Stack A: ");
  	// printstack(head);
+	//find_max(head);
  	if((check_sort(head)) == 1)
 	{
-		stackB = init_empty_stack();
+		if(argc == 4)
+		{
+			sort_three(&head);
+		}
+		else
+		{
+			stackB = init_empty_stack();
 	//	ft_printf("sort happening: \n");
-		little_logic(head, stackB);
+			little_logic(head, stackB);
 	//	ft_printf("sort over \n");
+		}
 	}
 	return (0);
 }
