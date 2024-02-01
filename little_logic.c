@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 19:27:34 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:10:58 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,29 @@ struct s_stack	*sort_three(struct s_stack **stack_a)
 		else
 			rra(stack_a);
 	}
-	ft_printf("Stack A after sort_three: ");
-	printstack(*stack_a);
+	// ft_printf("Stack A after sort_three: ");
+	// printstack(*stack_a);
 
 	return(*stack_a);
+}
+
+//hier weitermanchen
+struct s_stack	*sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	int	min;
+	int	max = find_max(stack_a);
+
+	pb(stack_a);
+	pb(stack_a);
+	sort_three(stack_a);
+
+		if(!(stack_b->data < stack_b->data->next))
+			sb(stack_b);
+
+	pa(stack_a);
+	if(!(check_sort(stack_a)))
+		if (stack_a->data  min)
+			ra(stack_a);
+
+
 }
