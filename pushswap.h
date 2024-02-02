@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 19:21:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 10:30:16 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ struct s_stack *reverse_rotation(struct s_stack **stack);
 void	sort(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b);
 void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b);
+void	push_min(struct s_stack **stack_a, struct s_stack **stack_b);
 struct s_stack	*sort_three(struct s_stack **stack_a);
+struct s_stack	*sort_five(struct s_stack **stack_a, struct s_stack **stack_b);
 
 
 struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b);

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 19:28:51 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 10:33:15 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,10 @@ int main(int argc, char **argv)
 		if(argc == 4)
 		{
 			sort_three(&head);
+		}
+		else if(argc == 6)
+		{
+			sort_five(&head, &stackB);
 		}
 		else
 		{
