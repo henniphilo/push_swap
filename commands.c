@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/01/30 19:29:42 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:27:35 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ struct s_stack	*sa(struct s_stack **stack_a)
 {
 	swap_stack(stack_a);
 	ft_printf("sa\n");
-	//ft_putendl_fd("sa", 1);
 	return(*stack_a);
 }
 
@@ -151,7 +150,6 @@ int	sb(struct s_stack **stack_b)
 	if(swap_stack(stack_b) != 0)
 		return(1);
 	ft_printf("sb");
-	//ft_putendl_fd("sb", 1);
 	return(0);
 }
 
@@ -160,7 +158,6 @@ int	ss(struct s_stack **stack_a, struct s_stack **stack_b)
 	swap_stack(stack_a);
 	swap_stack(stack_b);
 	ft_printf("ss");
-//	ft_putendl_fd("ss", 1);
 	return(0);
 }
 

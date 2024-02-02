@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 10:34:36 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:42:50 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,14 @@ void	push_min(struct s_stack **stack_a, struct s_stack **stack_b)
 		{
 			sa(stack_a);
 		}
-		else if(min_pos <= (size/2))
+		else if(min_pos <= (size/2 + size % 2))
 		{
 			while (*stack_a != NULL && (*stack_a)->data != min )
 			{
 				ra(&*stack_a);
 			}
 		}
-		else if(min_pos > (size/2))
+		else if(min_pos > (size/2 + size % 2) )
 		{
 			while (*stack_a != NULL && (*stack_a)->data != min )
 			{
@@ -134,6 +134,7 @@ void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b)
 	{
 		pa(&stack_a, &stack_b);
 	}
+	//ft_printf("zurueck sortiert\n");
 	// ft_printf("Stack A after sort_back: ");
 	// printstack(stack_a);
 	// ft_printf("Stack B after sort_back: ");
@@ -146,7 +147,7 @@ void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b)
 	sort_back(stack_a, stack_b);
 }
 
-struct s_stack	*sort_three(struct s_stack **stack_a)
+void	sort_three(struct s_stack **stack_a)
 {
 	int	min;
 	int	max;
@@ -162,8 +163,8 @@ struct s_stack	*sort_three(struct s_stack **stack_a)
 	else if((*stack_a)->data == max)
 	{
 		ra(stack_a);
-		if(!(check_sort(*stack_a)))
-			sa(stack_a);
+		if(check_sort(*stack_a) == 1)
+				sa(stack_a);
 	}
 	else
 	{
@@ -174,17 +175,33 @@ struct s_stack	*sort_three(struct s_stack **stack_a)
 	}
 	// ft_printf("Stack A after sort_three: ");
 	// printstack(*stack_a);
-
-	return(*stack_a);
 }
 
-//hier weitermanchen
-
-struct s_stack	*sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
+void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	push_min(stack_a, stack_b);
-	push_min(stack_a, stack_b);
-	sort_three(stack_a);
-	sort_back(*stack_a, *stack_b);
-	return(*stack_a);
+	struct s_stack	*head;
+
+	head = *stack_a;
+
+	ft_printf("Stack A before min gepusht: ");
+			printstack(head);
+	ft_printf("Stack B before min push: ");
+			printstack(head);
+	push_min(&head, stack_b);
+	push_min(&head, stack_b);
+	ft_printf("Stack A after min gepusht: ");
+			printstack(head);
+	ft_printf("Stack B after min push: ");
+			printstack(*stack_b);
+
+	sort_three(&head);
+//	sort_back(*stack_a, *stack_b);
+
+	pa(&head, stack_b);
+	pa(&head, stack_b);
+
+	ft_printf("Stack A after 5: ");
+			printstack(head);
+	ft_printf("Stack B 5: ");
+			printstack(*stack_b);
 }
