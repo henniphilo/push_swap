@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 13:45:15 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:33:45 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	sort(struct s_stack **stack_a, struct s_stack **stack_b)
 	while((*stack_a)->next != NULL)
 	{
 		push_min(stack_a, stack_b);
-	 }
+	}
 }
 
 void	push_min(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -178,5 +178,104 @@ void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	pa(&head, stack_b);
 	pa(&head, stack_b);
-
 }
+
+int	find_min_in_part(struct s_stack *stack, int part)
+{
+	struct s_stack	*head;
+	int	min;
+	int	current_pos;
+	int	min_pos;
+
+	head = stack;
+	min = head->data;
+	min_pos = 0;
+	current_pos = 0;
+
+	ft_printf("part ist: %d\n", part);
+
+	while(stack && current_pos < part)
+		{
+			if(head->data < min)
+			{
+				min = head->data;
+				min_pos = current_pos;
+			}
+			head = head->next;
+			current_pos++;
+		}
+	return(min_pos);
+}
+
+void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	//int	min = find_min(*stack_a);
+	int	size = stacksize(*stack_a);
+	int	current_pos;
+	int	min_pos = find_min_in_part(*stack_a, (size/4 + size % 4));
+
+	current_pos = 0;
+
+	//	ft_printf("position of min: %d\n", min_pos);
+		if (min_pos == 1)
+		{
+			sa(stack_a);
+		}
+		else
+		{
+			while (*stack_a && current_pos < min_pos )
+			{
+				ra(&*stack_a);
+					current_pos++;
+			}
+		}
+		if (current_pos == min_pos)
+		{
+			pb(&*stack_a, stack_b);
+		}
+}
+
+void	sort_hundert(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	int	size;
+	// int	max;
+	// int	min;
+	int	min_pos;
+	// int	median;
+
+	size = stacksize(*stack_a);
+
+	ft_printf("stack size: %d\n", size);
+
+	min_pos = find_min_in_part(*stack_a, (size / 2 + size % 2));
+
+	push_part_min(stack_a, stack_b);
+
+	// min = find_min(*stack_a);
+	// 	max = find_max(*stack_a);
+
+	// 	median = ((max + min) / 2);
+
+	// 	ft_printf("min: {%d}\n", min);
+	// 	ft_printf("max: {%d}\n", max);
+	// 	ft_printf("median: {%d}\n", median);
+
+	// while((*stack_a)->next != NULL)
+	// {
+
+	// 	if((*stack_a)->data <= median)
+	// 		{
+	// 			pb(stack_a, stack_b);
+	// 		}
+	// 	else
+	// 		ra(stack_a);
+	// }
+	ft_printf("stack a nach min part push:");
+	printstack(*stack_a);
+
+	ft_printf("stack b nach min part push:");
+	printstack(*stack_b);
+}
+
+
+

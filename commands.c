@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 13:45:24 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:49:53 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	*stack_b = push_stack(*stack_b, stack_a);
-	/*if(*stack_b != NULL)
-		return(1);*/
 	ft_printf("pa\n");
 	return(*stack_b);
 }
@@ -99,8 +97,6 @@ struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b)
 struct s_stack	*pb(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	*stack_a = push_stack(*stack_a, stack_b);
-/*	if(*stack_a != NULL)
-		return(1);*/
 	ft_printf("pb\n");
 	return(*stack_a);
 }

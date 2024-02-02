@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 13:46:03 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:48:56 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,10 @@ int main(int argc, char **argv)
 		else
 		{
 			stackB = init_empty_stack();
-	//	ft_printf("sort happening: \n");
-			little_logic(head, stackB);
-	//	ft_printf("sort over \n");
-			ft_printf("Stack A after sort: ");
-			printstack(head);
+			sort_hundert(&head, &stackB);
+			// little_logic(head, stackB);
+			// ft_printf("Stack A after sort: ");
+			// printstack(head);
 		}
 
 	}
