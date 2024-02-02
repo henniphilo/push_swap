@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 17:33:45 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:25:17 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,12 +207,12 @@ int	find_min_in_part(struct s_stack *stack, int part)
 	return(min_pos);
 }
 
-void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b)
+void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part)
 {
 	//int	min = find_min(*stack_a);
-	int	size = stacksize(*stack_a);
+	//int	size = stacksize(*stack_a);
 	int	current_pos;
-	int	min_pos = find_min_in_part(*stack_a, (size/4 + size % 4));
+	int	min_pos = find_min_in_part(*stack_a, part);
 
 	current_pos = 0;
 
@@ -238,43 +238,61 @@ void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b)
 void	sort_hundert(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	int	size;
-	// int	max;
-	// int	min;
 	int	min_pos;
-	// int	median;
+	int	part;
+	struct s_stack	*head;
 
-	size = stacksize(*stack_a);
+	head = *stack_a;
 
-	ft_printf("stack size: %d\n", size);
+	while(head->next != NULL)
+	{
+		size = stacksize(head);
+	// ft_printf("stack size: %d\n", size);
+		part = (size / 4 + size % 4);
+		min_pos = find_min_in_part(head, part);
+			push_part_min(&head, stack_b, part);
+	}
 
-	min_pos = find_min_in_part(*stack_a, (size / 2 + size % 2));
-
-	push_part_min(stack_a, stack_b);
-
-	// min = find_min(*stack_a);
-	// 	max = find_max(*stack_a);
-
-	// 	median = ((max + min) / 2);
-
-	// 	ft_printf("min: {%d}\n", min);
-	// 	ft_printf("max: {%d}\n", max);
-	// 	ft_printf("median: {%d}\n", median);
-
-	// while((*stack_a)->next != NULL)
-	// {
-
-	// 	if((*stack_a)->data <= median)
-	// 		{
-	// 			pb(stack_a, stack_b);
-	// 		}
-	// 	else
-	// 		ra(stack_a);
-	// }
 	ft_printf("stack a nach min part push:");
 	printstack(*stack_a);
 
 	ft_printf("stack b nach min part push:");
 	printstack(*stack_b);
+}
+
+int	check_max(struct s_stack **stack)
+{
+	int	min;
+	int max;
+	struct s_stack	*head;
+
+	head = *stack;
+	min = find_min(head);
+	max = find_max(head);
+
+	if(head->data == min)
+		ra(stack);
+		check_reversed_order(*stack);
+
+	return(0);
+}
+
+int	check_reversed_order(struct s_stack *stack)
+{
+	struct s_stack	*head;
+
+	head = stack;
+	while(head->next)
+	{
+		if(head->data < head->next->data)
+			{
+				// ft_printf("stack is not sorted\n");
+				return(1);
+			}
+		head = head->next;
+	}
+	// ft_printf("stack is sorted\n");
+	return(0);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 17:23:32 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:23:57 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_min(struct s_stack *stack);
 int	find_max(struct s_stack *stack);
 int	find_min_position(struct s_stack *stack);
 int	find_min_in_part(struct s_stack *stack, int part);
-
+int	check_reversed_order(struct s_stack *stack);
 
 void	printstack(struct s_stack *head);
 struct s_stack *init_stack(int argc, char **argv);
@@ -54,7 +54,7 @@ void	push_min(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_three(struct s_stack **stack_a);
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_hundert(struct s_stack **stack_a, struct s_stack **stack_b);
-void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b);
+void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part);
 
 
 struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b);
