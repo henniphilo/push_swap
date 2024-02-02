@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 13:42:50 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:45:15 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,6 @@ void	sort(struct s_stack **stack_a, struct s_stack **stack_b)
 	{
 		push_min(stack_a, stack_b);
 	 }
-	//  ft_printf("Stack A after sort: ");
-	// printstack(*stack_a);
-	// ft_printf("Stack B after sort: ");
- 	// printstack(*stack_b);
 }
 
 void	push_min(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -134,11 +130,6 @@ void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b)
 	{
 		pa(&stack_a, &stack_b);
 	}
-	//ft_printf("zurueck sortiert\n");
-	// ft_printf("Stack A after sort_back: ");
-	// printstack(stack_a);
-	// ft_printf("Stack B after sort_back: ");
- 	// printstack(stack_b);
 }
 
 void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b)
@@ -173,8 +164,6 @@ void	sort_three(struct s_stack **stack_a)
 		else
 			rra(stack_a);
 	}
-	// ft_printf("Stack A after sort_three: ");
-	// printstack(*stack_a);
 }
 
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -183,25 +172,11 @@ void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	head = *stack_a;
 
-	ft_printf("Stack A before min gepusht: ");
-			printstack(head);
-	ft_printf("Stack B before min push: ");
-			printstack(head);
 	push_min(&head, stack_b);
 	push_min(&head, stack_b);
-	ft_printf("Stack A after min gepusht: ");
-			printstack(head);
-	ft_printf("Stack B after min push: ");
-			printstack(*stack_b);
-
 	sort_three(&head);
-//	sort_back(*stack_a, *stack_b);
 
 	pa(&head, stack_b);
 	pa(&head, stack_b);
 
-	ft_printf("Stack A after 5: ");
-			printstack(head);
-	ft_printf("Stack B 5: ");
-			printstack(*stack_b);
 }
