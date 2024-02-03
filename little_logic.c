@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 19:00:50 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:05:59 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	put_on_top_a(struct s_stack **stack, int num)
 	int	size;
 
 	head = *stack;
-	num_pos = find_num_position(*stack, num);
 	size = stacksize(*stack);
+	num_pos = find_num_position(*stack, num, size);
+
 
 	if(num_pos == 1)
 	{
@@ -76,8 +77,9 @@ void	put_on_top_b(struct s_stack **stack, int num)
 	int	size;
 
 	head = *stack;
-	num_pos = find_num_position(*stack, num);
 	size = stacksize(*stack);
+	num_pos = find_num_position(*stack, num, size);
+
 
 	if(num_pos == 1)
 	{
@@ -99,7 +101,7 @@ void	put_on_top_b(struct s_stack **stack, int num)
 		}
 }
 
-int	find_num_position(struct s_stack *stack, int num)
+int	find_num_position(struct s_stack *stack, int num, int part)
 {
 	struct s_stack	*head;
 	int	current_pos;
@@ -109,7 +111,7 @@ int	find_num_position(struct s_stack *stack, int num)
 	num_pos = 0;
 	current_pos = 0;
 
-	while(head != NULL)
+	while(head != NULL && current_pos < part)
 	{
 		if(head->data == num)
 		{
@@ -122,6 +124,7 @@ int	find_num_position(struct s_stack *stack, int num)
 	ft_printf("pos of num:%d\n", num_pos);
 	return(num_pos);
 }
+
 
 int	find_min_position(struct s_stack *stack)
 {
@@ -147,6 +150,7 @@ int	find_min_position(struct s_stack *stack)
 	}
 	return(min_pos);
 }
+
 
 int	find_max(struct s_stack *stack)
 {
@@ -207,8 +211,6 @@ void	push_min(struct s_stack **stack_a, struct s_stack **stack_b)
 		}
 }
 
-
-
 void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b)
 {
 	while(stack_b)
@@ -223,10 +225,10 @@ void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b)
 	sort(&stack_a, &stack_b);
 	sort_back(stack_a, stack_b);
 
-	ft_printf("Stack A nach sort: ");
- 	printstack(stack_a);
-	ft_printf("Stack B nach sort: ");
- 	printstack(stack_b);
+	// ft_printf("Stack A nach sort: ");
+ 	// printstack(stack_a);
+	// ft_printf("Stack B nach sort: ");
+ 	// printstack(stack_b);
 }
 
 void	sort_three(struct s_stack **stack_a)
@@ -412,51 +414,81 @@ void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	int	max;
 	int	size;
-	int	current;
 	struct s_stack	*head;
+	struct s_stack	*head_b;
+	int	med;
+	int	current_pos;
 
 	size = stacksize(*stack_a);
-	current = 0;
 	head = *stack_a;
-	max = find_max(head);
+	head_b = *stack_b;
+	max = find_max(*stack_a);
+	med = (max / 2 + max % 2);
+	current_pos = 0;
 
+	ft_printf("med ist %d\n", med);
 
-	while(head && current != size)
+	while(head && current_pos < size)
 	{
-		if(head->data > (max/2 + max % 2))
+		//ft_printf("betritt loop\n");
+		if(head->data >= med)
 		{
-			pb(&head, stack_b);
+		//	ft_printf("schiebt auf b\n");
+			pb(&head, &head_b);
 		}
 		else
 		{
+		//	ft_printf("hier\n");
 			ra(&head);
 		}
-		current++;
+		current_pos++;
 	}
 		ft_printf("Stack A after hin her: ");
  			printstack(head);
 			ft_printf("Stack B after hin her: ");
- 			printstack(*stack_b);
+ 			printstack(head_b);
 }
 
-//hier hakts noch herausfinden warum min b nicht rueberkommt zu a
-
-void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b)
+//hier sind die pointer nicht richtig upgedatet warum????
+void	presort_back(struct s_stack *stack_a, struct s_stack *stack_b)
 {
-	int	size_b;
-	int	min_b;
-	struct s_stack	*head_b;
+	//int	size_b;
+	//int	min_b;
+	//int	current_pos;
+	// struct s_stack	*head_a;
+	// struct s_stack	*head_b;
 
-	size_b = stacksize(*stack_b);
-	head_b = *stack_b;
+	//current_pos = 0;
 
-	while(head_b)
-	{
-		min_b = find_min(head_b);
-		put_on_top_b(&head_b, min_b);
-		if(head_b->data == min_b)
-		{
-			pa(stack_a, &head_b);
-		}
-	}
+	//size_b = stacksize(*stack_b);
+	// head_b = *stack_b;
+	// head_a = *stack_a;
+
+
+			ft_printf("Stack A before presort: ");
+ 			printstack(stack_a);
+			ft_printf("Stack B before presort: ");
+ 			printstack(stack_b);
+
+	// while(head_b && current_pos < size_b)
+	// {
+	// 	min_b = find_min(head_b);
+	// 	put_on_top_b(&head_b, min_b);
+	// 	//if(head_b->data == min_b)
+		ft_printf("ist min wird pa\n");
+		// pa(&head_a, &head_b);
+		pa(&stack_a, &stack_b);
+	// 		break;
+	// 	current_pos++;
+	// }
+		ft_printf("Stack A after presort: ");
+ 			printstack(stack_a);
+			ft_printf("Stack B after presort: ");
+ 			printstack(stack_b);
+}
+
+void	wtf(struct s_stack *stack_a, struct s_stack *stack_b)
+{
+	hin_her(&stack_a, &stack_b);
+	presort_back(stack_a, stack_b);
 }

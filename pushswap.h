@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 18:04:36 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:05:22 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	find_min_position(struct s_stack *stack);
 int	find_min_in_part(struct s_stack *stack, int part);
 int	check_reversed_order(struct s_stack *stack);
 int	check_max(struct s_stack **stack);
-int	find_num_position(struct s_stack *stack, int num);
+int	find_num_position(struct s_stack *stack, int num, int part);
 
 
 void	printstack(struct s_stack *head);
@@ -61,7 +61,8 @@ void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part)
 void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b);
 void	put_on_top_a(struct s_stack **stack, int num);
 void	put_on_top_b(struct s_stack **stack, int num);
-void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b);
+void	presort_back(struct s_stack *stack_a, struct s_stack *stack_b);
+void	wtf(struct s_stack *stack_a, struct s_stack *stack_b);
 
 
 struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b);
