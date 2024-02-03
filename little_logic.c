@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 18:25:17 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:54:09 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,62 @@ int	find_min(struct s_stack *stack)
 		}
 		head = head->next;
 	}
+	//ft_printf("min is: %d\n", min);
 	return(min);
+}
+
+void	put_on_top_a(struct s_stack **stack, int num)
+{
+	struct s_stack	*head;
+	int	num_pos;
+	int	size;
+
+	head = *stack;
+	num_pos = find_num_position(*stack, num);
+	size = stacksize(*stack);
+
+	if(num_pos == 1)
+	{
+		sa(stack);
+	}
+	else if(num_pos <= (size/2 + size % 2))
+	{
+		while (*stack != NULL && (*stack)->data != num )
+		{
+			ra(stack);
+		}
+	}
+	else if(num_pos > (size/2 + size % 2) )
+		{
+			while (*stack != NULL && (*stack)->data != num)
+			{
+				rra(stack);
+			}
+		}
+}
+
+int	find_num_position(struct s_stack *stack, int num)
+{
+	struct s_stack	*head;
+	int	current_pos;
+	int	num_pos;
+
+	head = stack;
+	num_pos = 0;
+	current_pos = 0;
+
+	while(head != NULL)
+	{
+		if(head->data == num)
+		{
+			num = head->data;
+			num_pos = current_pos;
+		}
+		head = head->next;
+		current_pos++;
+	}
+	ft_printf("pos of num:%d\n", num_pos);
+	return(num_pos);
 }
 
 int	find_min_position(struct s_stack *stack)
@@ -130,12 +185,18 @@ void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b)
 	{
 		pa(&stack_a, &stack_b);
 	}
+
 }
 
 void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b)
 {
 	sort(&stack_a, &stack_b);
 	sort_back(stack_a, stack_b);
+
+	ft_printf("Stack A nach sort: ");
+ 	printstack(stack_a);
+	ft_printf("Stack B nach sort: ");
+ 	printstack(stack_b);
 }
 
 void	sort_three(struct s_stack **stack_a)
@@ -164,6 +225,10 @@ void	sort_three(struct s_stack **stack_a)
 		else
 			rra(stack_a);
 	}
+
+	ft_printf("Stack A nach sort 3: ");
+ 	printstack(*stack_a);
+
 }
 
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -178,6 +243,11 @@ void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	pa(&head, stack_b);
 	pa(&head, stack_b);
+
+	// ft_printf("Stack A nach sort 5: ");
+ 	// printstack(*stack_a);
+	// ft_printf("Stack B nach sort 5: ");
+ 	// printstack(*stack_b);
 }
 
 int	find_min_in_part(struct s_stack *stack, int part)
@@ -192,7 +262,7 @@ int	find_min_in_part(struct s_stack *stack, int part)
 	min_pos = 0;
 	current_pos = 0;
 
-	ft_printf("part ist: %d\n", part);
+	//ft_printf("part ist: %d\n", part);
 
 	while(stack && current_pos < part)
 		{
@@ -238,27 +308,32 @@ void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part)
 void	sort_hundert(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	int	size;
-	int	min_pos;
+	//int	min_pos;
 	int	part;
 	struct s_stack	*head;
 
 	head = *stack_a;
+
+	pb(&head, stack_b);
+	pb(&head, stack_b);
 
 	while(head->next != NULL)
 	{
 		size = stacksize(head);
 	// ft_printf("stack size: %d\n", size);
 		part = (size / 4 + size % 4);
-		min_pos = find_min_in_part(head, part);
+		//min_pos = find_min_in_part(head, part);
 			push_part_min(&head, stack_b, part);
+			check_max(stack_b);
 	}
 
-	ft_printf("stack a nach min part push:");
-	printstack(*stack_a);
+	// ft_printf("stack a nach min part push:");
+	// printstack(*stack_a);
 
-	ft_printf("stack b nach min part push:");
-	printstack(*stack_b);
+	// ft_printf("stack b nach min part push:");
+	// printstack(*stack_b);
 }
+
 
 int	check_max(struct s_stack **stack)
 {
@@ -271,9 +346,16 @@ int	check_max(struct s_stack **stack)
 	max = find_max(head);
 
 	if(head->data == min)
-		ra(stack);
-		check_reversed_order(*stack);
-
+		{
+			rb(stack);
+			if(check_reversed_order(*stack) == 1)
+				sb(stack);
+		}
+	else if(head->data < max)
+		{
+			sb(stack);
+				check_reversed_order(*stack);
+		}
 	return(0);
 }
 
@@ -291,9 +373,30 @@ int	check_reversed_order(struct s_stack *stack)
 			}
 		head = head->next;
 	}
-	// ft_printf("stack is sorted\n");
+	ft_printf("stack is reverse sorted\n");
 	return(0);
 }
 
+void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	int	max;
+	int	size;
+	int	current;
 
+	size = stacksize(*stack_a);
+	max = find_max(*stack_a);
+	current = 0;
 
+	while(stack_a && current != size)
+	{
+		if((*stack_a)->data > (max/2 + max % 2))
+		{
+			pb(stack_a, stack_b);
+		}
+		else
+		{
+			ra(stack_a);
+		}
+		current++;
+	}
+}

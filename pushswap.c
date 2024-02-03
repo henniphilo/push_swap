@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 15:48:56 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:53:21 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int main(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*stackB;
+	int	size;
+	int	min;
 
 	if (argc < 2)
 	{
@@ -110,6 +112,9 @@ int main(int argc, char **argv)
 	}
 	check_args(argc, argv);
 	head = init_stack(argc, argv);
+
+	size = stacksize(head);
+	min = find_min(head);
 
 	if (head == NULL)
 	{
@@ -127,16 +132,18 @@ int main(int argc, char **argv)
 		{
 			stackB = init_empty_stack();
 			sort_five(&head, &stackB);
-			// ft_printf("Stack A mit 5: ");
-			// printstack(head);
+			ft_printf("Stack A mit 5: ");
+			printstack(head);
 		}
 		else
 		{
 			stackB = init_empty_stack();
-			sort_hundert(&head, &stackB);
-			// little_logic(head, stackB);
-			// ft_printf("Stack A after sort: ");
-			// printstack(head);
+			put_on_top_a(&head, min);
+			//hin_her(&head, &stackB);
+			//sort_hundert(&head, &stackB);
+			//little_logic(head, stackB);
+			ft_printf("Stack A after sort: ");
+			printstack(head);
 		}
 
 	}
