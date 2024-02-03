@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 17:52:17 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:04:36 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	sort_hundert(struct s_stack **stack_a, struct s_stack **stack_b);
 void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part);
 void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b);
 void	put_on_top_a(struct s_stack **stack, int num);
+void	put_on_top_b(struct s_stack **stack, int num);
+void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b);
 
 
 struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b);

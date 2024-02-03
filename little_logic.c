@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 17:54:09 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:00:50 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	find_min(struct s_stack *stack)
 		}
 		head = head->next;
 	}
-	//ft_printf("min is: %d\n", min);
+	ft_printf("min is: %d\n", min);
 	return(min);
 }
 
@@ -65,6 +65,36 @@ void	put_on_top_a(struct s_stack **stack, int num)
 			while (*stack != NULL && (*stack)->data != num)
 			{
 				rra(stack);
+			}
+		}
+}
+
+void	put_on_top_b(struct s_stack **stack, int num)
+{
+	struct s_stack	*head;
+	int	num_pos;
+	int	size;
+
+	head = *stack;
+	num_pos = find_num_position(*stack, num);
+	size = stacksize(*stack);
+
+	if(num_pos == 1)
+	{
+		sb(stack);
+	}
+	else if(num_pos <= (size/2 + size % 2))
+	{
+		while (*stack != NULL && (*stack)->data != num )
+		{
+			rb(stack);
+		}
+	}
+	else if(num_pos > (size/2 + size % 2) )
+		{
+			while (*stack != NULL && (*stack)->data != num)
+			{
+				rrb(stack);
 			}
 		}
 }
@@ -377,26 +407,56 @@ int	check_reversed_order(struct s_stack *stack)
 	return(0);
 }
 
+//grosse halfte rueber auf b
 void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	int	max;
 	int	size;
 	int	current;
+	struct s_stack	*head;
 
 	size = stacksize(*stack_a);
-	max = find_max(*stack_a);
 	current = 0;
+	head = *stack_a;
+	max = find_max(head);
 
-	while(stack_a && current != size)
+
+	while(head && current != size)
 	{
-		if((*stack_a)->data > (max/2 + max % 2))
+		if(head->data > (max/2 + max % 2))
 		{
-			pb(stack_a, stack_b);
+			pb(&head, stack_b);
 		}
 		else
 		{
-			ra(stack_a);
+			ra(&head);
 		}
 		current++;
+	}
+		ft_printf("Stack A after hin her: ");
+ 			printstack(head);
+			ft_printf("Stack B after hin her: ");
+ 			printstack(*stack_b);
+}
+
+//hier hakts noch herausfinden warum min b nicht rueberkommt zu a
+
+void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	int	size_b;
+	int	min_b;
+	struct s_stack	*head_b;
+
+	size_b = stacksize(*stack_b);
+	head_b = *stack_b;
+
+	while(head_b)
+	{
+		min_b = find_min(head_b);
+		put_on_top_b(&head_b, min_b);
+		if(head_b->data == min_b)
+		{
+			pa(stack_a, &head_b);
+		}
 	}
 }

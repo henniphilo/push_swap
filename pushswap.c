@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 17:53:21 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:51:49 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,12 @@ int main(int argc, char **argv)
 		{
 			stackB = init_empty_stack();
 			put_on_top_a(&head, min);
-			//hin_her(&head, &stackB);
+			hin_her(&head, &stackB);
+			ft_printf("Stack A after hin her: ");
+ 			printstack(head);
+			ft_printf("Stack B after hin her: ");
+ 			printstack(stackB);
+			presort_back(&head, &stackB);
 			//sort_hundert(&head, &stackB);
 			//little_logic(head, stackB);
 			ft_printf("Stack A after sort: ");

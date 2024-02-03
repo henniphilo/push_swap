@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 13:49:53 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:46:32 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ struct s_stack	*rra(struct s_stack **stack_a)
 struct s_stack	*rrb(struct s_stack **stack_b)
 {
 	reverse_rotation(stack_b);
-	ft_printf("rrb");
+	ft_printf("rrb\n");
 //	ft_putendl_fd("rrb", 1);
 	return(*stack_b);
 }
