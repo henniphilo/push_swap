@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 15:22:27 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:53:44 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,19 +141,18 @@ struct s_stack	*sa(struct s_stack **stack_a)
 	return(*stack_a);
 }
 
-int	sb(struct s_stack **stack_b)
+struct s_stack	*sb(struct s_stack **stack_b)
 {
-	if(swap_stack(stack_b) != 0)
-		return(1);
-	ft_printf("sb");
-	return(0);
+	swap_stack(stack_b);
+	ft_printf("sb\n");
+	return(*stack_b);
 }
 
 int	ss(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	swap_stack(stack_a);
 	swap_stack(stack_b);
-	ft_printf("ss");
+	ft_printf("ss\n");
 	return(0);
 }
 
@@ -190,13 +189,12 @@ struct s_stack	*ra(struct s_stack **stack_a)
 	return(*stack_a);
 }
 
-int	rb(struct s_stack **stack_b)
+struct s_stack	*rb(struct s_stack **stack_b)
 {
-	if(rota_stack(stack_b) != 0)
-		return(1);
-	ft_printf("rb");
+	rota_stack(stack_b);
+	ft_printf("rb\n");
 	//ft_putendl_fd("rb", 1);
-	return(0);
+	return(*stack_b);
 }
 
 int	rr(struct s_stack **stack_a, struct s_stack **stack_b)

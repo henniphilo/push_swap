@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 15:54:49 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:16:24 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,28 +101,14 @@ void	sort_back(struct s_stack **stack_a, struct s_stack **stack_b)
 	head_a = *stack_a;
 	head_b = *stack_b;
 
-	ft_printf("Stack A before sort pa: ");
- 	printstack(head_a);
-	ft_printf("Stack B before sort pa: ");
- 	printstack(head_b);
-
 	while(head_b)
 	{
 		pa(&head_a, &head_b);
 	}
 
-	ft_printf("Stack A after sort pa: ");
- 	printstack(head_a);
-	ft_printf("Stack B after sort pa: ");
- 	printstack(head_b);
+	*stack_a = head_a;
+	*stack_b = head_b;
 
-	stack_a = &head_a;
-	stack_b = &head_b;
-
-	ft_printf("Stack A after back to stack: ");
- 	printstack(*stack_a);
-	ft_printf("Stack B after back to stack: ");
- 	printstack(*stack_b);
 }
 
 void	little_logic(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -138,11 +124,6 @@ void	little_logic(struct s_stack **stack_a, struct s_stack **stack_b)
 	head_b = *stack_b;
 	head_a = *stack_a;
 
-	// ft_printf("Stack A nach head assigned: ");
- 	// printstack(head_a);
-	// ft_printf("Stack B nach head assigned: ");
- 	// printstack(head_b);
-
 	sort(&head_a, &head_b);
 
 	ft_printf("Stack A nach sort function: ");
@@ -152,13 +133,7 @@ void	little_logic(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	sort_back(&head_a, &head_b);
 
-	// ft_printf("here faulty: \n");
-	// ft_printf("Stack A nach little logic: ");
- 	// printstack(head_a);
-	// ft_printf("Stack B nach little logic: ");
- 	// printstack(head_b);
 }
-
 
 //grosse halfte rueber auf b
 void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -170,24 +145,12 @@ void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
 	int	med;
 	int	current_pos;
 
-	// ft_printf("Stack A before hin her: ");
- 	// printstack(*stack_a);
-	// ft_printf("Stack B before hin her: ");
- 	// printstack(*stack_b);
-
 	size = stacksize(*stack_a);
 	head = *stack_a;
 	head_b = *stack_b;
 	max = find_max(*stack_a);
 	med = (max / 2 + max % 2);
 	current_pos = 0;
-
-	ft_printf("Stack A nach head assigned: ");
- 	printstack(head);
-	ft_printf("Stack B nach head assigned: ");
- 	printstack(head_b);
-
-	ft_printf("med ist %d\n", med);
 
 	while(head && current_pos < size)
 	{
@@ -209,54 +172,41 @@ void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
 			ft_printf("Stack B  hin her head: ");
  			printstack(head_b);
 
-	stack_a = &head;
+	*stack_a = head;
 	*stack_b = head_b;
 
-	ft_printf("Stack A after hin her stack: ");
- 			printstack(*stack_a);
-			ft_printf("Stack B after hin her stack: ");
- 			printstack(*stack_b);
+// 	ft_printf("Stack A  hin her head: ");
+//  			printstack(head);
+// 			ft_printf("Stack B  hin her head: ");
+//  			printstack(head_b);
 }
 
 //hier sind die pointer nicht richtig upgedatet warum????
 
 void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	//int	size_b;
-	//int	min_b;
-	//int	current_pos;
+	int	size_b;
+	int	min_b;
+	int	current_pos;
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
 
-	//current_pos = 0;
+	current_pos = 0;
 
-	//size_b = stacksize(*stack_b);
-
-	ft_printf("Stack A before presort assign: ");
- 	printstack(*stack_a);
-	ft_printf("Stack B before presort assign: ");
- 	printstack(*stack_b);
+	size_b = stacksize(*stack_b);
 
 	head_b = *stack_b;
 	head_a = *stack_a;
 
-
-			ft_printf("Stack A before presort: ");
- 			printstack(head_a);
-			ft_printf("Stack B before presort: ");
- 			printstack(head_b);
-
-	// while(head_b && current_pos < size_b)
-	// {
-	// 	min_b = find_min(head_b);
-	// 	put_on_top_b(&head_b, min_b);
-	// 	//if(head_b->data == min_b)
-		ft_printf("ist min wird pa\n");
-		// pa(&head_a, &head_b);
+	while(head_b && current_pos < size_b)
+	{
+		min_b = find_min(head_b);
+		put_on_top_b(&head_b, min_b);
+		//if(head_b->data == min_b)
 		pa(&head_a, &head_b);
 	// 		break;
-	// 	current_pos++;
-	// }
+	 	current_pos++;
+	}
 		ft_printf("Stack A after presort: ");
  			printstack(head_a);
 			ft_printf("Stack B after presort: ");
@@ -266,34 +216,112 @@ void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b)
 	*stack_b = head_b;
 }
 
+//was von b kommt nach unten sortieren wenn es kleiner ist als das naechste
+
+void	smart_top(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	struct s_stack	*head_a;
+	struct s_stack	*head_b;
+	int	size_b;
+	int	current;
+
+	head_a = *stack_a;
+	head_b = *stack_b;
+
+	size_b = stacksize(*stack_b);
+	current = 0;
+	ft_printf("size b: %d\n", size_b);
+
+	sort_back(&head_a, &head_b);
+
+	// ft_printf("Stack A after sort_back: ");
+ 	// 	printstack(head_a);
+	// 	ft_printf("Stack B after sort_back: ");
+ 	// 	printstack(head_b);
+
+	while(head_a && current <= (size_b))
+		{
+			if(head_a->data < head_a->next->data)
+				ra(&head_a);
+			else
+				pb(&head_a, &head_b);
+			current++;
+			//ft_printf("current: %d\n", current);
+		}
+
+	ft_printf("Stack A  smart head: ");
+ 		printstack(head_a);
+		ft_printf("Stack B smart head: ");
+ 		printstack(head_b);
+
+	*stack_a = head_a;
+	*stack_b = head_b;
+}
+
+void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	struct s_stack	*head;
+	struct s_stack	*head_b;
+	int	max;
+	int	pos;
+	int	size;
+
+	head = *stack_a;
+	head_b = *stack_b;
+
+	size = stacksize(*stack_b);
+
+	max = find_max(head_b);
+	pos = find_num_position(head_b, max, size);
+
+		if (pos == 1)
+		{
+			sb(&head_b);
+		}
+		else if(pos <= (size/2 + size % 2))
+		{
+			{
+				rb(&head_b);
+				ft_printf("hi\n");
+			}
+		}
+		else if(pos > (size/2 + size % 2) )
+		{
+			while (head_b != NULL && head_b->data != max )
+			{
+				rrb(&head_b);
+			}
+		}
+		if (head_b->data == max)
+		{
+			pa(&head, &head_b);
+		}
+	*stack_a = head;
+	*stack_b = head_b;
+}
+
+void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	while(stack_b)
+	{
+		push_max(stack_a, stack_b);
+	}
+}
+
 void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
 
-	ft_printf("Stack A before wtf: ");
- 	printstack(*stack_a);
-	ft_printf("Stack B before wtf: ");
- 	printstack(*stack_b);
-
 	head = *stack_a;
 	head_b = *stack_b;
 
-
 	hin_her(&head, &head_b);
+	sort_max(&head, &head_b);
 
-	// ft_printf("Stack A after wtf: ");
- 	// printstack(*stack_a);
-	// ft_printf("Stack B after wtf: ");
- 	// printstack(*stack_b);
+	//smart_top(&head, &head_b);
 
-
-	ft_printf("Stack A in wtf after hin her: ");
- 	printstack(head);
-	ft_printf("Stack B in wtf after hin her: ");
- 	printstack(head_b);
-
-	presort_back(&head, &head_b);
+	//presort_back(&head, &head_b);
 
 	*stack_a = head;
 	*stack_b = head_b;

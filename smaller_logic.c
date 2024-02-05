@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 13:10:40 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:10:03 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ void	sort_three(struct s_stack **stack_a)
 		else
 			rra(stack_a);
 	}
-
-	ft_printf("Stack A nach sort 3: ");
- 	printstack(*stack_a);
 
 }
 

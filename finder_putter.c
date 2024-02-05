@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:25:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 12:27:34 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:04:22 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	find_min(struct s_stack *stack)
 		}
 		head = head->next;
 	}
-	ft_printf("min is: %d\n", min);
 	return(min);
 }
 
@@ -91,7 +90,6 @@ int	find_num_position(struct s_stack *stack, int num, int part)
 		head = head->next;
 		current_pos++;
 	}
-	ft_printf("pos of num:%d\n", num_pos);
 	return(num_pos);
 }
 
