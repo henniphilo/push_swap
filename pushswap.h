@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 22:05:22 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:31:46 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ struct s_stack	*swap_stack(struct s_stack **stack);
 struct s_stack *rota_stack(struct s_stack **head);
 struct s_stack *reverse_rotation(struct s_stack **stack);
 void	sort(struct s_stack **stack_a, struct s_stack **stack_b);
-void	sort_back(struct s_stack *stack_a, struct s_stack *stack_b);
-void	little_logic(struct s_stack *stack_a, struct s_stack *stack_b);
+void	sort_back(struct s_stack **stack_a, struct s_stack **stack_b);
+void	little_logic(struct s_stack **stack_a, struct s_stack **stack_b);
 void	push_min(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_three(struct s_stack **stack_a);
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b);
@@ -61,8 +61,8 @@ void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part)
 void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b);
 void	put_on_top_a(struct s_stack **stack, int num);
 void	put_on_top_b(struct s_stack **stack, int num);
-void	presort_back(struct s_stack *stack_a, struct s_stack *stack_b);
-void	wtf(struct s_stack *stack_a, struct s_stack *stack_b);
+void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b);
+void	wtf(struct s_stack **stack_a, struct s_stack **stack_b);
 
 
 struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b);
@@ -70,7 +70,7 @@ struct s_stack	*pb(struct s_stack **stack_a, struct s_stack **stack_b);
 struct s_stack	*sa(struct s_stack **stack_a);
 int	sb(struct s_stack **stack_b);
 int	ss(struct s_stack **stack_a, struct s_stack **stack_b);
-int	ra(struct s_stack **stack_a);
+struct s_stack	*ra(struct s_stack **stack_a);
 int	rb(struct s_stack **stack_b);
 int	rr(struct s_stack **stack_a, struct s_stack **stack_b);
 struct s_stack	*rra(struct s_stack **stack_a);

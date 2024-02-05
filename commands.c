@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 18:46:32 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 11:27:16 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to
 
 	if(stack_from == NULL)
 	{
-		ft_printf("StackA is empty");
-		return(*stack_to);
+		ft_printf("Stack is empty\n");
+		return(stack_from);
 	}
 
 	firstelement = stack_from->data;
@@ -183,14 +183,11 @@ struct s_stack *rota_stack(struct s_stack **head)
 	return (*head);
 }
 
-int	ra(struct s_stack **stack_a)
+struct s_stack	*ra(struct s_stack **stack_a)
 {
 	rota_stack(stack_a);
-		//return(1);
 	ft_printf("ra\n");
-	//ft_printf("stack killer\n");
-//	ft_putendl_fd("ra", 1);
-	return(0);
+	return(*stack_a);
 }
 
 int	rb(struct s_stack **stack_b)

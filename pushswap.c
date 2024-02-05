@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/03 22:01:06 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:05:38 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int main(int argc, char **argv)
 	}
 	check_args(argc, argv);
 	head = init_stack(argc, argv);
+	ft_printf("erstes mal stack nach init stack A:");
+	printstack(head);
 
 	size = stacksize(head);
 	min = find_min(head);
@@ -138,14 +140,23 @@ int main(int argc, char **argv)
 		else
 		{
 			stackB = init_empty_stack();
+			//stackB = push(stackB, 32);
+			ft_printf("Stack A: ");
+			printstack(head);
+			ft_printf("stack B: ");
+			printstack(stackB);
+
 			//put_on_top_a(&head, min);
 			// hin_her(&head, &stackB);
+
 			// presort_back(&head, &stackB);
-			wtf(head, stackB);
+			//wtf(&head, &stackB);
 			//sort_hundert(&head, &stackB);
-			//little_logic(head, stackB);
-			// ft_printf("Stack A after sort: ");
-			// printstack(head);
+			little_logic(&head, &stackB);
+			ft_printf("Stack A after sort main: ");
+			printstack(head);
+			ft_printf("stack B nach sort main: ");
+			printstack(stackB);
 		}
 
 	}
