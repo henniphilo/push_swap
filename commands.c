@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 19:53:44 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:33:24 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,9 @@ struct s_stack *rota_stack(struct s_stack **head)
 
 	if(*head == NULL || (*head)->next == NULL)
 	{
-		ft_printf("no rotation possible");
+		ft_printf("no rotation possible\n");
 		return(*head);
+	//	exit(1);
 	}
 	while(current->next != NULL)
 	{
