@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 12:31:46 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:22:28 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
 struct s_stack	*pop(struct s_stack *head);
 struct s_stack	*push(struct s_stack *head, int data);
-struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to);
+void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to);
 struct s_stack	*swap_stack(struct s_stack **stack);
 struct s_stack *rota_stack(struct s_stack **head);
 struct s_stack *reverse_rotation(struct s_stack **stack);
@@ -65,8 +65,8 @@ void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b);
 void	wtf(struct s_stack **stack_a, struct s_stack **stack_b);
 
 
-struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b);
-struct s_stack	*pb(struct s_stack **stack_a, struct s_stack **stack_b);
+void	pa(struct s_stack **stack_a, struct s_stack **stack_b);
+void	pb(struct s_stack **stack_a, struct s_stack **stack_b);
 struct s_stack	*sa(struct s_stack **stack_a);
 int	sb(struct s_stack **stack_b);
 int	ss(struct s_stack **stack_a, struct s_stack **stack_b);

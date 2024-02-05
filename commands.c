@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 11:27:16 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:22:27 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,42 +63,42 @@ struct s_stack ft_swap(struct s_stack *a, struct s_stack *b)
 
 //push the first element of a stack to the top of second stack
 
-struct s_stack	*push_stack(struct s_stack *stack_from, struct s_stack **stack_to)
+void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
 {
 	int	firstelement;
 
-	if(stack_from == NULL)
+	if(*stack_from == NULL)
 	{
 		ft_printf("Stack is empty\n");
-		return(stack_from);
+		return;
 	}
 
-	firstelement = stack_from->data;
-	stack_from = pop(stack_from);
+	firstelement = (*stack_from)->data;
+	*stack_from = pop(*stack_from);
 	*stack_to = push(*stack_to, firstelement);
 
 	// ft_printf(">%d< was pushed\n", (*stack_to)->data);
 	// printstack(stack_from);
 	// printstack(*stack_to);
-	return(stack_from);
+	/*return(stack_from);*/
 }
 
 //pa | push the first element of stack b to the top of stack a
 
-struct s_stack	*pa(struct s_stack **stack_a, struct s_stack **stack_b)
+void	pa(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	*stack_b = push_stack(*stack_b, stack_a);
+	push_stack(stack_b, stack_a);
 	ft_printf("pa\n");
-	return(*stack_b);
+	//return(*stack_b);
 }
 
 // pb | push the first element of stack a to the top of stack b
 
-struct s_stack	*pb(struct s_stack **stack_a, struct s_stack **stack_b)
+void	pb(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	*stack_a = push_stack(*stack_a, stack_b);
+	push_stack(stack_a, stack_b);
 	ft_printf("pb\n");
-	return(*stack_a);
+	//return(*stack_a);
 }
 
 //swapping the first to elements of a stack

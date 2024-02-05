@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 13:05:38 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:38:15 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +149,20 @@ int main(int argc, char **argv)
 			//put_on_top_a(&head, min);
 			// hin_her(&head, &stackB);
 
+
 			// presort_back(&head, &stackB);
-			//wtf(&head, &stackB);
-			//sort_hundert(&head, &stackB);
-			little_logic(&head, &stackB);
-			ft_printf("Stack A after sort main: ");
+			wtf(&head, &stackB);
+			ft_printf("HI!\n");
+			ft_printf("Stack A after hin main: ");
 			printstack(head);
-			ft_printf("stack B nach sort main: ");
+			ft_printf("stack B nach hin main: ");
 			printstack(stackB);
+			//sort_hundert(&head, &stackB);
+			//little_logic(&head, &stackB);
+			// ft_printf("Stack A after sort main: ");
+			// printstack(head);
+			// ft_printf("stack B nach sort main: ");
+			// printstack(stackB);
 		}
 
 	}
