@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/06 10:14:07 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/06 11:31:48 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,7 +308,6 @@ void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
 	*stack_b = head_b;
 }
 
-//kreiiert infinte loop segfault
 void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	struct s_stack	*head;
@@ -330,6 +329,7 @@ void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
+	int	size;
 
 	head = *stack_a;
 	head_b = *stack_b;
@@ -339,6 +339,9 @@ void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	sort_max(&head, &head_b);
 
+	size = stacksize(head);
+	reverse_compare(&head, &head_b, size);
+
 	//smart_top(&head, &head_b);
 
 	//presort_back(&head, &head_b);
@@ -347,19 +350,31 @@ void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
 	*stack_b = head_b;
 }
 
-void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b)
+void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b, int part)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
+	int	current;
 
 	head = *stack_a;
 	head_b = *stack_b;
+	current = 0;
 
-	while(head)
+	ft_printf("Stack A:");
+	printstack(head);
+
+	if (head != NULL)
 	{
 		rra(&head);
-			if(head->data > head->next->data)
-				pb(&head, &head_b);
+		while(head && current < part)
+		{
+			rra(&head);
+				if(head && (head->data > head->next->data))
+					{
+						pb(&head, &head_b);
+					}
+			current++;
+		}
 	}
 
 	*stack_a = head;

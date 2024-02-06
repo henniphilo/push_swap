@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 21:35:57 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/06 11:28:21 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	smart_top(struct s_stack **stack_a, struct s_stack **stack_b);
 void	wtf(struct s_stack **stack_a, struct s_stack **stack_b);
 void	push_max(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b);
-void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b);
+void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b, int part);
 
 
 void	pa(struct s_stack **stack_a, struct s_stack **stack_b);
