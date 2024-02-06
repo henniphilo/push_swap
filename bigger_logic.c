@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 21:41:52 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/06 10:14:07 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,32 +267,34 @@ void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
 	head = *stack_a;
 	head_b = *stack_b;
 
-	size = stacksize(*stack_b);
+	ft_printf("stack b is: \n");
+	printstack(head_b);
 
 	max = find_max(head_b);
-	pos = find_num_position(head_b, max, size);
-
 	ft_printf("max is: %d\n", max);
-	ft_printf("pos is: %d\n", pos);
 
-	// if(head_b == NULL)
-	// {
-	// 	return(head_b);
-	// }
 	if (head_b->data == max)
 		{
 			pa(&head, &head_b);
 		}
-		else if (pos == 1)
+	max = find_max(head_b);
+	ft_printf("max is: %d\n", max);
+	size = stacksize(head_b);
+	pos = find_num_position(head_b, max, size);
+	ft_printf("pos is: %d\n", pos);
+
+	if (pos == 1)
 		{
 			sb(&head_b);
 		}
-		else if(head_b && (pos < (size/2 + size % 2)))
+		else if(pos <= (size/2 + size % 2))
 		{
+			while (head_b != NULL && head_b->data != max )
 			{
 				rb(&head_b);
 				ft_printf("hi\n");
 			}
+			pa(&head, &head_b);
 		}
 		else if(head_b && (pos > (size/2 + size % 2)))
 		{
@@ -304,16 +306,24 @@ void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	*stack_a = head;
 	*stack_b = head_b;
-
-	//return(head_b);
 }
 
+//kreiiert infinte loop segfault
 void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	while(stack_b != NULL)
+	struct s_stack	*head;
+	struct s_stack	*head_b;
+
+	head = *stack_a;
+	head_b = *stack_b;
+
+	while(head_b != NULL)
 	{
-		push_max(stack_a, stack_b);
+		push_max(&head, &head_b);
 	}
+
+	*stack_a = head;
+	*stack_b = head_b;
 }
 
 void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
