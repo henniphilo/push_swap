@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 16:26:56 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:55:20 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,8 @@ void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
 			//	ft_printf("hi\n");
 			}
 			pa(&head, &head_b);
+
+
 		}
 		else if(head_b && (pos > (size/2 + size % 2)))
 		{
@@ -205,22 +207,39 @@ void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
 	head = *stack_a;
 	head_b = *stack_b;
 
-	med = (find_max(head_b) / 2);
+
+	// ft_printf("Stack A:");
+	// printstack(head);
+	// ft_printf("Stack B:");
+	// printstack(head_b);
 
 	while(head_b)
 	{
 		push_max(&head, &head_b);
-		ft_printf("med is: %d, und data head is: %d \n", med, head->data);
-			if(head->data <= med)
-			{
-				ra(&head);
-			}
+	// 	ft_printf("Stack A:");
+	// printstack(head);
+	// ft_printf("Stack B:");
+	// printstack(head_b);
+	// 	ft_printf("med is: %d, und data head is: %d \n", med, head->data);
+
 	}
 
 	*stack_a = head;
 	*stack_b = head_b;
 }
 
+//ueberpruefen was von b kommt und das nochmal aufteilen in halfte runter,
+void	chunky(struct s_stack **stack, int max_b)
+{
+	struct s_stack	*head;
+
+	head = *stack;
+
+	if(head && (head->data <= (max_b / 2)))
+				ra(&head);
+
+	*stack = head;
+}
 
 
 //hier an logic arbeiten

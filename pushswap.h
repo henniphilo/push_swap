@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 11:37:10 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:54:49 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_stack
 long int	atoi_ps(const char *str);
 void	check_args(int argc, char **argv);
 void	stack_index(struct s_stack *stack);
+
+void	chunky(struct s_stack **stack, int max_b);
+
 
 int	stacksize(struct s_stack *stack);
 int	stackempty(struct s_stack *stack);

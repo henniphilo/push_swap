@@ -2,6 +2,11 @@
 
 //was von b kommt nach unten sortieren wenn es kleiner ist als das naechste
 
+int	stackempty(struct s_stack *stack)
+{
+	return (stack->next == NULL);
+}
+
 void	smart_top(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	struct s_stack	*head_a;
