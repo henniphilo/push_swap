@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:25:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 16:04:22 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:28:55 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,12 @@ int	find_max(struct s_stack *stack)
 	int	max;
 
 	head = stack;
-	max = head->data;
 
-	if(stack == NULL)
+	if(head == NULL)
 		{
 			return(1);
 		}
+	max = head->data;
 
 	while(head != NULL)
 	{
@@ -146,7 +146,8 @@ int	find_max(struct s_stack *stack)
 		}
 		head = head->next;
 	}
-//	ft_printf("max is <%d>\n", max);
+	//ft_printf("max is <%d>\n", max);
+
 	return(max);
 }
 

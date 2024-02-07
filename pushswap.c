@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/06 11:31:24 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:43:16 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,21 @@ int main(int argc, char **argv)
 
 	size = stacksize(head);
 	min = find_min(head);
+	//stack_index(head);
 
 	if (head == NULL)
 	{
 		ft_printf("Error Stack init");
 		return 1;
 	}
+
+	// while(head != NULL)
+	// {
+	// 	ft_printf("index von zahl: >%d< ist <%d>\n", head->data, head->index);
+	// 	head = head->next;
+	// }
+
+
 	//find_max(head);
  	if((check_sort(head)) == 1)
 	{
@@ -146,11 +155,11 @@ int main(int argc, char **argv)
 
 			//sort_hundert(&head, &stackB);
 			//little_logic(&head, &stackB);
-			ft_printf("Stack A after sort main: ");
-			printstack(head);
-			ft_printf("stack B nach sort main: ");
-			printstack(stackB);
-		}
+		// 	ft_printf("Stack A after sort main: ");
+		// 	printstack(head);
+		// 	ft_printf("stack B nach sort main: ");
+		// 	printstack(stackB);
+		 }
 
 	}
 	return (0);

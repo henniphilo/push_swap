@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 21:33:24 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:35:59 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,6 @@ struct s_stack	*push(struct s_stack *head, int data)
 	newnode->next = head;
 	head->prev = newnode;
 	return (newnode);
-}
-
-struct s_stack ft_swap(struct s_stack *a, struct s_stack *b)
-{
-	struct s_stack	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-	ft_printf("swap\n");
-	return(tmp);
 }
 
 //push the first element of a stack to the top of second stack
