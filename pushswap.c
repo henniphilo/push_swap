@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 12:48:59 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:30:59 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ int main(int argc, char **argv)
 	}
 	check_args(argc, argv);
 
-	to_sorted_array(argc, argv);
-
 	head = init_stack(argc, argv);
+
+	to_sorted_array(argc, argv, head);
 
 	size = stacksize(head);
 	min = find_min(head);

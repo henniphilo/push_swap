@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 13:13:21 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:37:24 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,28 +76,52 @@ void	array_sort(char **array, int n)
 		free(array);
 }
 
-void	array_index(char **array, int n)
+// void	array_index(char **array, int n)
+// {
+// 	int	index;
+
+// 	index = 0;
+
+// 	while(index < n)
+// 	{
+// 		++index;
+// 	}
+// }
+
+void	assign_index(struct s_stack *stack, char **array, int n)
 {
-	int	index;
+	struct s_stack	*head;
+	int	i;
 
-	index = 0;
+	i = 0;
+	head = stack;
 
-	while(index < n)
+	while(i < n)
 	{
-		++index;
+		while(head != NULL && head->data != ft_atoi(array[i]))
+		{
+			head = head->next;
+		}
+		if(head != NULL)
+		{
+			head->index = i;
+		}
+		i++;
 	}
 }
 
 
-void	to_sorted_array(int argc, char **argv)
+void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
 {
 	char	**array;
+	struct s_stack	*head;
 
+	head = stack;
 	array = args_array(argc, argv);
-//	ft_printf("array ist : [%s] \n", array);
 	array_sort(array, argc - 1);
-}
+	assign_index(head, array, argc - 1);
 
+}
 
 int	stacksize(struct s_stack *stack)
 {
@@ -115,43 +139,3 @@ int	stacksize(struct s_stack *stack)
 }
 
 
-// static void	bubble_index(struct s_stack **stack)
-// {
-// 	int	swapped;
-// 	struct s_stack	*bubble;
-// 	//struct s_stack	*blubb;
-
-// 	swapped = 1;
-
-// 	while(swapped)
-// 	{
-// 		swapped = 0;
-// 		bubble = *stack;
-// 		//blubb = NULL;
-
-// 		while(bubble && bubble->next)
-// 		{
-// 			if(bubble->data > bubble->next->data)
-// 			{
-// 				ft_swap(bubble, bubble->next);
-// 				swapped = 1;
-// 			}
-// 		bubble = bubble->next;
-// 		}
-// 	}
-// }
-
-// void	stack_index(struct s_stack *stack)
-// {
-// 	int	index;
-
-// 	index = 1;
-
-// 	bubble_index(&stack);
-
-// 	while(stack != NULL)
-// 		{
-// 			stack ->index = index++;
-// 			stack = stack->next;
-// 		}
-// }

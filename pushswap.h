@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 12:49:13 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:30:12 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_args(int argc, char **argv);
 //void	stack_index(struct s_stack *stack);
 void	array_index(char **array, int n);
 void	array_sort(char **array, int n);
-void	to_sorted_array(int argc, char **argv);
+void	to_sorted_array(int argc, char **argv, struct s_stack *stack);
 
 void	chunky(struct s_stack **stack, int max_b);
 
