@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 17:09:41 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:11:00 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ void	array_sort(char **array, int n)
 // 		++index;
 // 	}
 // }
+
+
+	//immer noch probleme mit richtig index!!!!
+
+
+
 
 void	assign_index(struct s_stack **stack, char **array, int n)
 {
