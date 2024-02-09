@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 15:37:24 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:39:56 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
 	array_sort(array, argc - 1);
 	assign_index(head, array, argc - 1);
 
+	stack = head;
 }
 
 int	stacksize(struct s_stack *stack)

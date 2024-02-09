@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 12:42:32 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:46:31 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,22 @@ void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
 
 void	pa(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	push_stack(stack_b, stack_a);
-	ft_printf("pa\n");
-	//return(*stack_b);
+	if(*stack_b != NULL)
+	{
+		push_stack(stack_b, stack_a);
+		ft_printf("pa\n");
+	}
 }
 
 // pb | push the first element of stack a to the top of stack b
 
 void	pb(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	push_stack(stack_a, stack_b);
-	ft_printf("pb\n");
-	//return(*stack_a);
+	if(*stack_b != NULL)
+	{
+		push_stack(stack_a, stack_b);
+		ft_printf("pb\n");
+	}
 }
 
 //swapping the first to elements of a stack
@@ -125,6 +129,10 @@ struct s_stack	*swap_stack(struct s_stack **stack)
 
 struct s_stack	*sa(struct s_stack **stack_a)
 {
+	if(*stack_a == NULL)
+	{
+		return(*stack_a);
+	}
 	swap_stack(stack_a);
 	ft_printf("sa\n");
 	return(*stack_a);
@@ -143,6 +151,10 @@ struct s_stack	*sb(struct s_stack **stack_b)
 
 int	ss(struct s_stack **stack_a, struct s_stack **stack_b)
 {
+	if(*stack_a == NULL || *stack_b == NULL)
+	{
+		return(1);
+	}
 	swap_stack(stack_a);
 	swap_stack(stack_b);
 	ft_printf("ss\n");
@@ -178,6 +190,10 @@ struct s_stack *rota_stack(struct s_stack **head)
 
 struct s_stack	*ra(struct s_stack **stack_a)
 {
+	if(*stack_a == NULL)
+	{
+		return(*stack_a);
+	}
 	rota_stack(stack_a);
 	ft_printf("ra\n");
 	return(*stack_a);
@@ -185,6 +201,10 @@ struct s_stack	*ra(struct s_stack **stack_a)
 
 struct s_stack	*rb(struct s_stack **stack_b)
 {
+	if(*stack_b == NULL)
+	{
+		return(*stack_b);
+	}
 	rota_stack(stack_b);
 	ft_printf("rb\n");
 	//ft_putendl_fd("rb", 1);
@@ -193,6 +213,10 @@ struct s_stack	*rb(struct s_stack **stack_b)
 
 int	rr(struct s_stack **stack_a, struct s_stack **stack_b)
 {
+	if(*stack_a == NULL || *stack_b == NULL)
+	{
+		return(1);
+	}
 	rota_stack(stack_a);
 	rota_stack(stack_b);
 	ft_printf("rr");
@@ -231,23 +255,33 @@ struct s_stack *reverse_rotation(struct s_stack **stack)
 
 struct s_stack	*rra(struct s_stack **stack_a)
 {
+	if(*stack_a == NULL)
+	{
+		return(*stack_a);
+	}
 	reverse_rotation(stack_a);
 	ft_printf("rra\n");
-	//ft_putendl_fd("rra", 1);
 	return(*stack_a);
 }
 //rrb | reverse rotate the stack b, move the last element to the top.
 struct s_stack	*rrb(struct s_stack **stack_b)
 {
+	if(*stack_b == NULL)
+	{
+		return(*stack_b);
+	}
 	reverse_rotation(stack_b);
 	ft_printf("rrb\n");
-//	ft_putendl_fd("rrb", 1);
 	return(*stack_b);
 }
 
 //rra | reverse rotate the stack a, move the last element to the top.
 int	rrr(struct s_stack **stack_a, struct s_stack **stack_b)
 {
+	if(*stack_a == NULL || *stack_b == NULL)
+	{
+		return(1);
+	}
 	reverse_rotation(stack_a);
 	reverse_rotation(stack_b);
 	ft_printf("rrr");
