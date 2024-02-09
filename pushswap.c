@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 16:10:34 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:01:19 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 
 
 			// presort_back(&head, &stackB);
-			wtf(&head, &stackB);
+			wtf(&head, &stackB, argc);
 
 			//sort_hundert(&head, &stackB);
 			//little_logic(&head, &stackB);

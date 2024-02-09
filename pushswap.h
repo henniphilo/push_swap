@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 15:30:12 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:57:15 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void	array_index(char **array, int n);
 void	array_sort(char **array, int n);
 void	to_sorted_array(int argc, char **argv, struct s_stack *stack);
 
-void	chunky(struct s_stack **stack, int max_b);
-
-
+int	chunky(int argc);
 int	stacksize(struct s_stack *stack);
 int	stackempty(struct s_stack *stack);
 int	check_sort(struct s_stack *stack);
@@ -68,12 +66,12 @@ void	sort_three(struct s_stack **stack_a);
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_hundert(struct s_stack **stack_a, struct s_stack **stack_b);
 void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part);
-void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b);
+void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b, int chunk);
 void	put_on_top_a(struct s_stack **stack, int num);
 void	put_on_top_b(struct s_stack **stack, int num);
 void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b);
 void	smart_top(struct s_stack **stack_a, struct s_stack **stack_b);
-void	wtf(struct s_stack **stack_a, struct s_stack **stack_b);
+void	wtf(struct s_stack **stack_a, struct s_stack **stack_b, int argc);
 void	push_max(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b);
 void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b, int part);
