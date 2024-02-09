@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 15:39:56 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:27:37 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	array_sort(char **array, int n)
 
 	i = 0;
 
-	// for(int k = 0; k < n; k++)
-	// {
-	// 	ft_printf("befor sort Element %d: %s\n", k, array[k]);
-	// }
+	for(int k = 0; k < n; k++)
+	{
+		ft_printf("befor sort Element %d: %s\n", k, array[k]);
+	}
 
 	while(i < n - 1)
 	{
@@ -69,11 +69,10 @@ void	array_sort(char **array, int n)
 		i++;
 	}
 
-	// for(int k = 0; k < n; k++)
-	// {
-	// 	ft_printf("Element %d: %s\n", k, array[k]);
-	// }
-		free(array);
+	for(int k = 0; k < n; k++)
+	{
+		ft_printf("Element %d: %s\n", k, array[k]);
+	}
 }
 
 // void	array_index(char **array, int n)
@@ -88,26 +87,35 @@ void	array_sort(char **array, int n)
 // 	}
 // }
 
-void	assign_index(struct s_stack *stack, char **array, int n)
+void	assign_index(struct s_stack **stack, char **array, int n)
 {
 	struct s_stack	*head;
-	int	i;
+	//int	i;
 
-	i = 0;
-	head = stack;
+	//i = 0;
+	head = *stack;
 
-	while(i < n)
+	ft_printf("stack is: \n");
+	printstack(head);
+
+	for(int k = 0; k < n; k++)
 	{
-		while(head != NULL && head->data != ft_atoi(array[i]))
-		{
-			head = head->next;
-		}
-		if(head != NULL)
-		{
-			head->index = i;
-		}
-		i++;
+		ft_printf("array %d: %s\n", k, array[k]);
 	}
+
+	// while(i < n)
+	// {
+	// 	while(head != NULL && head->data != ft_atoi(array[i]))
+	// 	{
+	// 		head = head->next;
+	// 	}
+	// 	if(head != NULL)
+	// 	{
+	// 		head->index = i;
+	// 	}
+	// 	i++;
+	// }
+	*stack = head;
 }
 
 
@@ -119,9 +127,11 @@ void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
 	head = stack;
 	array = args_array(argc, argv);
 	array_sort(array, argc - 1);
-	assign_index(head, array, argc - 1);
+	assign_index(&head, array, argc - 1);
 
 	stack = head;
+	free(array);
+
 }
 
 int	stacksize(struct s_stack *stack)
