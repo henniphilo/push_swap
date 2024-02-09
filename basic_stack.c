@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 16:27:37 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:06:37 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,11 @@ void	array_sort(char **array, int n)
 void	assign_index(struct s_stack **stack, char **array, int n)
 {
 	struct s_stack	*head;
-	//int	i;
+	struct s_stack	*current;
 
-	//i = 0;
+	int	i;
+
+	i = 0;
 	head = *stack;
 
 	ft_printf("stack is: \n");
@@ -103,19 +105,22 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 		ft_printf("array %d: %s\n", k, array[k]);
 	}
 
-	// while(i < n)
-	// {
-	// 	while(head != NULL && head->data != ft_atoi(array[i]))
-	// 	{
-	// 		head = head->next;
-	// 	}
-	// 	if(head != NULL)
-	// 	{
-	// 		head->index = i;
-	// 	}
-	// 	i++;
-	// }
-	*stack = head;
+	while(i < n)
+	{
+		current = head;
+
+		while(current != NULL && current->data != ft_atoi(array[i]))
+		{
+			current = current->next;
+		}
+		if(current != NULL)
+		{
+			ft_printf("i is: %d\n", i);
+			current->index = i;
+		}
+		i++;
+	}
+	//*stack = head;
 }
 
 
@@ -129,9 +134,8 @@ void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
 	array_sort(array, argc - 1);
 	assign_index(&head, array, argc - 1);
 
-	stack = head;
+//	stack = head;
 	free(array);
-
 }
 
 int	stacksize(struct s_stack *stack)

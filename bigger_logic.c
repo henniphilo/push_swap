@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 15:51:12 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:44:42 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,14 @@ void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	while(head && current_pos < size)
 	{
-		//ft_printf("betritt loop\n");
+		ft_printf("index is: %d \n", head->index);
 		if(head->data >= med)
 		{
-		//	ft_printf("schiebt auf b\n");
 			pb(&head, &head_b);
 		}
 		else
 		{
-		//	ft_printf("hier\n");
+			//ft_printf("hier\n");
 			ra(&head);
 		}
 		current_pos++;

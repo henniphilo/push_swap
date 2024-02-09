@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 15:46:31 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:43:19 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,16 @@ void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
 
 void	pa(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	if(*stack_b != NULL)
-	{
 		push_stack(stack_b, stack_a);
 		ft_printf("pa\n");
-	}
 }
 
 // pb | push the first element of stack a to the top of stack b
 
 void	pb(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	if(*stack_b != NULL)
-	{
 		push_stack(stack_a, stack_b);
 		ft_printf("pb\n");
-	}
 }
 
 //swapping the first to elements of a stack
