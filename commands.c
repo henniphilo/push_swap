@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 11:35:59 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:42:32 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,12 @@ struct s_stack	*sa(struct s_stack **stack_a)
 
 struct s_stack	*sb(struct s_stack **stack_b)
 {
+	if(*stack_b == NULL)
+	{
+		return(*stack_b);
+	}
 	swap_stack(stack_b);
-	ft_printf("sb\n");
+		ft_printf("sb\n");
 	return(*stack_b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 16:54:49 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:49:13 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <string.h>
 # include "./libft/libft.h"
 
 typedef struct s_stack
@@ -28,8 +29,12 @@ typedef struct s_stack
 }	t_stack;
 
 long int	atoi_ps(const char *str);
+char	**args_array(int argc, char **argv);
 void	check_args(int argc, char **argv);
-void	stack_index(struct s_stack *stack);
+//void	stack_index(struct s_stack *stack);
+void	array_index(char **array, int n);
+void	array_sort(char **array, int n);
+void	to_sorted_array(int argc, char **argv);
 
 void	chunky(struct s_stack **stack, int max_b);
 
@@ -46,7 +51,7 @@ int	check_max(struct s_stack **stack);
 int	find_num_position(struct s_stack *stack, int num, int part);
 
 
-void	printstack(struct s_stack *head);
+void	printstack(struct s_stack *stack);
 struct s_stack *init_stack(int argc, char **argv);
 struct s_stack *create_node(int data);
 struct s_stack	*pop(struct s_stack *head);

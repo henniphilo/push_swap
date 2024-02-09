@@ -5,6 +5,8 @@
 		"string_view": "c",
 		"ranges": "c",
 		"span": "c",
-		"pushswap.h": "c"
+		"pushswap.h": "c",
+		"cstring": "c",
+		"typeinfo": "c"
 	}
 }

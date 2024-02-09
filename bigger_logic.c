@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 16:55:20 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:42:08 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,7 @@ void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
-	int	med;
+	//int	med;
 
 	head = *stack_a;
 	head_b = *stack_b;
@@ -296,7 +296,7 @@ void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
 
 //size would be good if part of stack
 	 size = stacksize(head);
-	// reverse_compare(&head, &head_b, size);
+	 reverse_compare(&head, &head_b, size);
 
 	// sort_max(&head, &head_b);
 

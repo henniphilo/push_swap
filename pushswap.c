@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 14:43:16 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:48:59 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 // doubly linked list
 
 
-void	printstack(struct s_stack *head)
+void	printstack(struct s_stack *stack)
 {
-	struct s_stack *ptr = head;
+	struct s_stack *head;
 
-	while (ptr != NULL)
+	head = stack;
+
+	while (head != NULL)
 	{
-		ft_printf(" (%d) ", ptr->data);
-		ptr = ptr->next;
+		ft_printf(" (%d) ", head->data);
+		head = head->next;
 	}
 	ft_printf("\n");
 }
@@ -111,6 +113,9 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	check_args(argc, argv);
+
+	to_sorted_array(argc, argv);
+
 	head = init_stack(argc, argv);
 
 	size = stacksize(head);
