@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 12:51:02 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:13:21 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ void	array_sort(char **array, int n)
 	int j;
 
 	i = 0;
-	j = 0;
 
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("befor sort Element %d: %s\n", k, array[k]);
+	// }
 
 	while(i < n - 1)
 	{
+		j = 0;
 		while(j < n - i - 1)
 		{
 			if(strcmp(array[j], array[j + 1]) > 0)
@@ -65,13 +69,25 @@ void	array_sort(char **array, int n)
 		i++;
 	}
 
-	for(int k = 0; k < n; k++)
-	{
-		ft_printf("Element %d: %s\n", k, array[k]);
-	}
-	//ft_printf("sorted array ist : [%s]", array);
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("Element %d: %s\n", k, array[k]);
+	// }
 		free(array);
 }
+
+void	array_index(char **array, int n)
+{
+	int	index;
+
+	index = 0;
+
+	while(index < n)
+	{
+		++index;
+	}
+}
+
 
 void	to_sorted_array(int argc, char **argv)
 {
@@ -82,17 +98,6 @@ void	to_sorted_array(int argc, char **argv)
 	array_sort(array, argc - 1);
 }
 
-// void	array_index(char **array, int n)
-// {
-// 	int	index;
-
-// 	index = 0;
-
-// 	while(index < n)
-// 	{
-// 		++index;
-// 	}
-// }
 
 int	stacksize(struct s_stack *stack)
 {

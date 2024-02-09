@@ -120,3 +120,45 @@ int	check_reversed_order(struct s_stack *stack)
 	ft_printf("stack is reverse sorted\n");
 	return(0);
 }
+
+
+// static void	bubble_index(struct s_stack **stack)
+// {
+// 	int	swapped;
+// 	struct s_stack	*bubble;
+// 	//struct s_stack	*blubb;
+
+// 	swapped = 1;
+
+// 	while(swapped)
+// 	{
+// 		swapped = 0;
+// 		bubble = *stack;
+// 		//blubb = NULL;
+
+// 		while(bubble && bubble->next)
+// 		{
+// 			if(bubble->data > bubble->next->data)
+// 			{
+// 				ft_swap(bubble, bubble->next);
+// 				swapped = 1;
+// 			}
+// 		bubble = bubble->next;
+// 		}
+// 	}
+// }
+
+// void	stack_index(struct s_stack *stack)
+// {
+// 	int	index;
+
+// 	index = 1;
+
+// 	bubble_index(&stack);
+
+// 	while(stack != NULL)
+// 		{
+// 			stack ->index = index++;
+// 			stack = stack->next;
+// 		}
+// }
