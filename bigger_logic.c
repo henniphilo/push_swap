@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 16:44:42 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:23:19 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b)
 	while(head && current_pos < size)
 	{
 		ft_printf("index is: %d \n", head->index);
-		if(head->data >= med)
+		if(head->data <= med)
 		{
 			pb(&head, &head_b);
 		}
@@ -263,8 +263,11 @@ void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b, int par
 	if (head != NULL)
 	{
 		//rra(&head);
-		while(head && current < part)
+		while(head && current <= part)
 		{
+			ft_printf("part is %d \n", part);
+			ft_printf("current is %d \n", current);
+
 			rra(&head);
 				if(head && (head->data > head->next->data) && (head->data > med))
 					{
@@ -290,20 +293,22 @@ void	wtf(struct s_stack **stack_a, struct s_stack **stack_b)
 	max = find_max(head);
 
 	hin_her(&head, &head_b);
+	size = stacksize(head);
 
 	sort_max(&head, &head_b);
 
 //size would be good if part of stack
-	 size = stacksize(head);
-	 reverse_compare(&head, &head_b, size);
+	ft_printf("size is %d \n", size);
 
-	// sort_max(&head, &head_b);
+	 reverse_compare(&head, &head_b, size - 1);
 
-	// while(head->data != max)
-	// {
-	// 	rra(&head);
-	// }
-	// ra(&head);
+	sort_max(&head, &head_b);
+
+	while(head->data != max)
+	{
+		rra(&head);
+	}
+	ra(&head);
 
 	//smart_top(&head, &head_b);
 

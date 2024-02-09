@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 17:06:37 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:09:41 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	array_sort(char **array, int n)
 
 	i = 0;
 
-	for(int k = 0; k < n; k++)
-	{
-		ft_printf("befor sort Element %d: %s\n", k, array[k]);
-	}
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("befor sort Element %d: %s\n", k, array[k]);
+	// }
 
 	while(i < n - 1)
 	{
@@ -69,10 +69,10 @@ void	array_sort(char **array, int n)
 		i++;
 	}
 
-	for(int k = 0; k < n; k++)
-	{
-		ft_printf("Element %d: %s\n", k, array[k]);
-	}
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("Element %d: %s\n", k, array[k]);
+	// }
 }
 
 // void	array_index(char **array, int n)
@@ -97,13 +97,13 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 	i = 0;
 	head = *stack;
 
-	ft_printf("stack is: \n");
-	printstack(head);
+	// ft_printf("stack is: \n");
+	// printstack(head);
 
-	for(int k = 0; k < n; k++)
-	{
-		ft_printf("array %d: %s\n", k, array[k]);
-	}
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("array %d: %s\n", k, array[k]);
+	// }
 
 	while(i < n)
 	{
@@ -115,7 +115,7 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 		}
 		if(current != NULL)
 		{
-			ft_printf("i is: %d\n", i);
+		//	ft_printf("i is: %d\n", i);
 			current->index = i;
 		}
 		i++;
