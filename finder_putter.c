@@ -6,83 +6,76 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:25:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/07 16:28:55 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:20:31 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	push_part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part)
+// push part min
+void	part_min(struct s_stack **stack_a, struct s_stack **stack_b, int part)
 {
-	//int	min = find_min(*stack_a);
-	//int	size = stacksize(*stack_a);
 	int	current_pos;
-	int	min_pos = find_min_in_part(*stack_a, part);
+	int	min_pos;
 
+	min_pos = find_min_in_part(*stack_a, part);
 	current_pos = 0;
-
-	//	ft_printf("position of min: %d\n", min_pos);
-		if (min_pos == 1)
+	if (min_pos == 1)
+	{
+		sa(stack_a);
+	}
+	else
+	{
+		while (*stack_a && current_pos < min_pos)
 		{
-			sa(stack_a);
+			ra(&*stack_a);
+			current_pos++;
 		}
-		else
-		{
-			while (*stack_a && current_pos < min_pos )
-			{
-				ra(&*stack_a);
-					current_pos++;
-			}
-		}
-		if (current_pos == min_pos)
-		{
-			pb(&*stack_a, stack_b);
-		}
+	}
+	if (current_pos == min_pos)
+	{
+		pb(&*stack_a, stack_b);
+	}
 }
 
 int	find_min(struct s_stack *stack)
 {
 	struct s_stack	*head;
-	int	min;
+	int				min;
 
 	head = stack;
 	min = head->data;
-
 	if (stack == NULL)
 	{
-		return(1);
+		return (1);
 	}
-
-	while(head != NULL)
+	while (head != NULL)
 	{
-		if(head->data < min)
+		if (head->data < min)
 		{
 			min = head->data;
 		}
 		head = head->next;
 	}
-	return(min);
+	return (min);
 }
-
 
 int	find_num_position(struct s_stack *stack, int num, int part)
 {
 	struct s_stack	*head;
-	int	current_pos;
-	int	num_pos;
+	int				current_pos;
+	int				num_pos;
 
 	head = stack;
 	num_pos = 0;
 	current_pos = 0;
-
-	if(stack == NULL)
-		{
-			return(1);
-		}
-
-	while(head != NULL && current_pos < part)
+	if (stack == NULL)
 	{
-		if(head->data == num)
+		return (1);
+	}
+	while (head != NULL && current_pos < part)
+	{
+		if (head->data == num)
 		{
 			num = head->data;
 			num_pos = current_pos;
@@ -90,30 +83,27 @@ int	find_num_position(struct s_stack *stack, int num, int part)
 		head = head->next;
 		current_pos++;
 	}
-	return(num_pos);
+	return (num_pos);
 }
-
 
 int	find_min_position(struct s_stack *stack)
 {
 	struct s_stack	*head;
-	int	min;
-	int	current_pos;
-	int	min_pos;
+	int				min;
+	int				current_pos;
+	int				min_pos;
 
 	head = stack;
 	min = head->data;
 	min_pos = 0;
 	current_pos = 0;
-
-	if(stack == NULL)
-		{
-			return(1);
-		}
-
-	while(head != NULL)
+	if (stack == NULL)
 	{
-		if(head->data < min)
+		return (1);
+	}
+	while (head != NULL)
+	{
+		if (head->data < min)
 		{
 			min = head->data;
 			min_pos = current_pos;
@@ -121,82 +111,76 @@ int	find_min_position(struct s_stack *stack)
 		head = head->next;
 		current_pos++;
 	}
-	return(min_pos);
+	return (min_pos);
 }
-
 
 int	find_max(struct s_stack *stack)
 {
 	struct s_stack	*head;
-	int	max;
+	int				max;
 
 	head = stack;
-
-	if(head == NULL)
-		{
-			return(1);
-		}
-	max = head->data;
-
-	while(head != NULL)
+	if (head == NULL)
 	{
-		if(head->data > max)
+		return (1);
+	}
+	max = head->data;
+	while (head != NULL)
+	{
+		if (head->data > max)
 		{
 			max = head->data;
 		}
 		head = head->next;
 	}
-	//ft_printf("max is <%d>\n", max);
-
-	return(max);
+	return (max);
 }
 
 int	find_min_in_part(struct s_stack *stack, int part)
 {
 	struct s_stack	*head;
-	int	min;
-	int	current_pos;
-	int	min_pos;
+	int				min;
+	int				current_pos;
+	int				min_pos;
 
 	head = stack;
 	min = head->data;
 	min_pos = 0;
 	current_pos = 0;
-
-	//ft_printf("part ist: %d\n", part);
-
-	while(stack && current_pos < part)
+	while (stack && current_pos < part)
+	{
+		if (head->data < min)
 		{
-			if(head->data < min)
-			{
-				min = head->data;
-				min_pos = current_pos;
-			}
-			head = head->next;
-			current_pos++;
+			min = head->data;
+			min_pos = current_pos;
 		}
-	return(min_pos);
+		head = head->next;
+		current_pos++;
+	}
+	return (min_pos);
 }
 
 void	push_min(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-		int	min = find_min(*stack_a);
-		int	min_pos = find_min_position(*stack_a);
-		int	size = stacksize(*stack_a);
+	int	min;
+	int	min_pos;
+	int	size;
 
-	//	ft_printf("position of min: %d\n", min_pos);
-		if (min_pos == 1)
-		{
-			sa(stack_a);
-		}
-		else if(min_pos <= (size/2 + size % 2))
+	min = find_min(*stack_a);
+	min_pos = find_min_position(*stack_a);
+	size = stacksize(*stack_a);
+	if (min_pos == 1)
+	{
+		sa(stack_a);
+	}
+	else if (min_pos <= (size/2 + size % 2))
 		{
 			while (*stack_a != NULL && (*stack_a)->data != min )
 			{
 				ra(&*stack_a);
 			}
 		}
-		else if(min_pos > (size/2 + size % 2) )
+		else if (min_pos > (size/2 + size % 2) )
 		{
 			while (*stack_a != NULL && (*stack_a)->data != min )
 			{

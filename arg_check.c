@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 17:08:36 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:01:09 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	check_duplicates(char **argv, int index, long num)
 	i = 1;
 	while (i < index)
 	{
-		if (atoi_ps(argv[i]) == num)
+		if (ft_atoi(argv[i]) == num)
 			return (1);
 		i++;
 	}
@@ -56,44 +56,35 @@ int	check_sort(struct s_stack *stack)
 	struct s_stack	*head;
 
 	head = stack;
-	while(head->next)
+	while (head->next)
 	{
-		if(head->data > head->next->data)
-			{
-				ft_printf("stack is not sorted\n");
-				return(1);
-			}
+		if (head->data > head->next->data)
+		{
+			ft_printf("stack is not sorted\n");
+			return (1);
+		}
 		head = head->next;
 	}
 	ft_printf("stack is sorted\n");
-	return(0);
+	return (0);
 }
 
 void	check_args(int argc, char **argv)
 {
 	char	**arguments;
-	int	i;
+	int		i;
 	long	num;
 
 	if (argc >= 2)
 	{
-	//	ft_printf("hallo flo\n");
 		i = 1;
 		arguments = argv;
 		while (arguments[i])
 		{
-			if(!check_num(arguments[i]))
-			{
-				ft_printf("Error");
-				exit(-1);
-			}
-			num = atoi_ps(arguments[i]);
-			if (num < INT_MIN || num > INT_MAX)
-			{
-				ft_printf("Error");
-				exit(-1);
-			}
-			if (check_duplicates(arguments, i, num))
+			num = ft_atoi(arguments[i]);
+			if (!check_num(arguments[i])
+				|| (num < INT_MIN || num > INT_MAX)
+				|| check_duplicates(arguments, i, num))
 			{
 				ft_printf("Error");
 				exit(-1);
@@ -102,4 +93,3 @@ void	check_args(int argc, char **argv)
 		}
 	}
 }
-

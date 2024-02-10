@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   smaler_logic.c                                     :+:      :+:    :+:   */
+/*   smaller_logic.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/05 16:10:03 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:19:08 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
 
 	pa(&head, stack_b);
 	pa(&head, stack_b);
-
-	// ft_printf("Stack A nach sort 5: ");
- 	// printstack(*stack_a);
-	// ft_printf("Stack B nach sort 5: ");
- 	// printstack(*stack_b);
 }
 
 

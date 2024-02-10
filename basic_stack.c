@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 17:23:08 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:40:42 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	printstack(struct s_stack *stack)
 {
-	struct s_stack *head;
+	struct s_stack	*head;
 
 	head = stack;
-
 	while (head != NULL)
 	{
 		ft_printf(" (%d) ", head->data);
@@ -26,7 +25,7 @@ void	printstack(struct s_stack *stack)
 	ft_printf("\n");
 }
 
-struct s_stack *create_node(int data)
+struct s_stack	*create_node(int data)
 {
 	struct s_stack	*node;
 
@@ -41,25 +40,23 @@ struct s_stack *create_node(int data)
 	{
 		ft_printf("Error allocating memory");
 	}
-	return node;
+	return (node);
 }
 
-
-struct s_stack *init_stack(int argc, char **argv)
+struct s_stack	*init_stack(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*current;
 	struct s_stack	*node;
-	int	i;
-	int	value;
+	int				i;
+	int				value;
 
 	head = 0;
 	current = 0;
 	i = 1;
-
 	while (i < argc)
 	{
-		value = atoi_ps(argv[i]);
+		value = ft_atoi(argv[i]);
 		if (value != 0 || (value == 0 && argv[i][0] == '0'))
 		{
 			node = create_node(value);
@@ -78,23 +75,19 @@ struct s_stack *init_stack(int argc, char **argv)
 				}
 				i++;
 			}
-			else
-			{
-				ft_printf("Error Init");
-			}
 		}
 		else
 		{
 			ft_printf("Error Convert");
-			break;
+			break ;
 		}
 	}
-	return(head);
+	return (head);
 }
 
-struct s_stack *init_empty_stack(void)
+struct s_stack	*init_empty_stack(void)
 {
-	return(NULL);
+	return (NULL);
 }
 
 int	stacksize(struct s_stack *stack)
@@ -111,4 +104,3 @@ int	stacksize(struct s_stack *stack)
 	}
 	return (i);
 }
-
