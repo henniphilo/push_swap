@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 16:43:19 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 17:18:03 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,6 @@ void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
 	firstelement = (*stack_from)->data;
 	*stack_from = pop(*stack_from);
 	*stack_to = push(*stack_to, firstelement);
-
-	// ft_printf(">%d< was pushed\n", (*stack_to)->data);
-	// printstack(stack_from);
-	// printstack(*stack_to);
-	/*return(stack_from);*/
 }
 
 //pa | push the first element of stack b to the top of stack a
@@ -113,8 +108,6 @@ struct s_stack	*swap_stack(struct s_stack **stack)
 
 	*stack = push(*stack, firstelement);
 	*stack = push(*stack, secondelement);
-
-	//ft_printf("swap\n");
 
 	(*stack)->data = secondelement;
 
@@ -167,9 +160,8 @@ struct s_stack *rota_stack(struct s_stack **head)
 
 	if(*head == NULL || (*head)->next == NULL)
 	{
-		ft_printf("no rotation possible\n");
+		ft_printf("Error\n");
 		return(*head);
-	//	exit(1);
 	}
 	while(current->next != NULL)
 	{
@@ -177,7 +169,6 @@ struct s_stack *rota_stack(struct s_stack **head)
 	}
 	(*head)->next = NULL;
 	current->next = *head;
-//head updaten
 	*head = new_top;
 	return (*head);
 }
@@ -201,7 +192,6 @@ struct s_stack	*rb(struct s_stack **stack_b)
 	}
 	rota_stack(stack_b);
 	ft_printf("rb\n");
-	//ft_putendl_fd("rb", 1);
 	return(*stack_b);
 }
 
@@ -214,7 +204,6 @@ int	rr(struct s_stack **stack_a, struct s_stack **stack_b)
 	rota_stack(stack_a);
 	rota_stack(stack_b);
 	ft_printf("rr");
-	//ft_putendl_fd("rr", 1);
 	return(0);
 }
 
@@ -230,7 +219,7 @@ struct s_stack *reverse_rotation(struct s_stack **stack)
 
 	if(*stack == NULL || (*stack)->next == NULL)
 	{
-		ft_printf("stack empty no reverse rota");
+		ft_printf("Error");
 		return(*stack);
 	}
 
@@ -279,7 +268,6 @@ int	rrr(struct s_stack **stack_a, struct s_stack **stack_b)
 	reverse_rotation(stack_a);
 	reverse_rotation(stack_b);
 	ft_printf("rrr");
-//	ft_putendl_fd("rrr", 1);
 	return(0);
 }
 

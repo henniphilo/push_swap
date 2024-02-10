@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 18:09:55 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 17:16:27 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,105 +44,41 @@ void	little_logic(struct s_stack **stack_a, struct s_stack **stack_b)
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
 
-	// ft_printf("Stack A before little logic: ");
- 	// printstack(*stack_a);
-	// ft_printf("Stack B before little logic: ");
- 	// printstack(*stack_b);
-
 	head_b = *stack_b;
 	head_a = *stack_a;
 
 	sort(&head_a, &head_b);
-
-	// ft_printf("Stack A nach sort function: ");
- 	// printstack(head_a);
-	// ft_printf("Stack B nach sort function: ");
- 	// printstack(head_b);
-
 	sort_back(&head_a, &head_b);
-
 }
 
-//kleineres drittel rueber auf b
 void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b, int chunk)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
-
-	//int	max;
 	int	size;
 	int	current_pos;
 
 	size = stacksize(*stack_a);
 	head = *stack_a;
 	head_b = *stack_b;
-	//max = find_max(*stack_a);
-	//med should be part nicht bezogen auf value sondern auf elementnummer
-	//(max / 2 + max % 2);
 	current_pos = 0;
-
-
-	// chunk muss sich auf index der elemente beziehen
 
 	while(head && current_pos < size)
 	{
-		ft_printf("data is: %d \n", head->data);
-		ft_printf("index is: %d \n", head->index);
 		if(head->index <= chunk)
 		{
 			pb(&head, &head_b);
 		}
 		else
 		{
-			//ft_printf("hier\n");
 			ra(&head);
 		}
 		current_pos++;
 	}
-		// ft_printf("Stack A  hin her head: ");
- 		// 	printstack(head);
-		// 	ft_printf("Stack B  hin her head: ");
- 		// 	printstack(head_b);
-
 	*stack_a = head;
 	*stack_b = head_b;
-
-// 	ft_printf("Stack A  hin her head: ");
-//  			printstack(head);
-// 			ft_printf("Stack B  hin her head: ");
-//  			printstack(head_b);
 }
 
-void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b)
-{
-	int	size_b;
-	int	min_b;
-	int	current_pos;
-	struct s_stack	*head_a;
-	struct s_stack	*head_b;
-
-	current_pos = 0;
-
-	size_b = stacksize(*stack_b);
-
-	head_b = *stack_b;
-	head_a = *stack_a;
-
-	while(head_b && current_pos < size_b)
-	{
-		min_b = find_min(head_b);
-		put_on_top_b(&head_b, min_b);
-		pa(&head_a, &head_b);
-	 	current_pos++;
-	}
-		ft_printf("Stack A after presort: ");
- 			printstack(head_a);
-			ft_printf("Stack B after presort: ");
- 			printstack(head_b);
-
-	*stack_a = head_a;
-	*stack_b = head_b;
-}
 
 
 void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
@@ -156,21 +92,15 @@ void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
 	head = *stack_a;
 	head_b = *stack_b;
 
-	// ft_printf("stack b is: \n");
-	// printstack(head_b);
-
 	max = find_max(head_b);
-	//ft_printf("max is: %d\n", max);
 
 	if (head_b->data == max)
 		{
 			pa(&head, &head_b);
 		}
 	max = find_max(head_b);
-//	ft_printf("max is: %d\n", max);
 	size = stacksize(head_b);
 	pos = find_num_position(head_b, max, size);
-	//ft_printf("pos is: %d\n", pos);
 
 	if (pos == 1)
 		{
@@ -181,7 +111,6 @@ void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
 			while (head_b != NULL && head_b->data != max )
 			{
 				rb(&head_b);
-			//	ft_printf("hi\n");
 			}
 			pa(&head, &head_b);
 
@@ -203,33 +132,19 @@ void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
-	//int	med;
 
 	head = *stack_a;
 	head_b = *stack_b;
 
-
-	// ft_printf("Stack A:");
-	// printstack(head);
-	// ft_printf("Stack B:");
-	// printstack(head_b);
-
 	while(head_b)
 	{
 		push_max(&head, &head_b);
-	// 	ft_printf("Stack A:");
-	// printstack(head);
-	// ft_printf("Stack B:");
-	// printstack(head_b);
-	// 	ft_printf("med is: %d, und data head is: %d \n", med, head->data);
-
 	}
 
 	*stack_a = head;
 	*stack_b = head_b;
 }
 
-//stacks in chuncks aufteilen
 int	chunky(int argc)
 {
 	int	chunk;
@@ -238,11 +153,11 @@ int	chunky(int argc)
 
 	if((argc - 1) >= 6 && (argc - 1) <= 100)
 	{
-		chunk = ((argc - 1) / 3 + (argc - 1) % 3);
+		chunk = ((argc - 1) / 5 + (argc - 1) % 5);
 	}
 	else if((argc - 1) >= 101 && (argc - 1) <= 500)
 	{
-		chunk = ((argc - 1) / 7 + (argc - 1) % 7);
+		chunk = ((argc - 1) / 11 + (argc - 1) % 11);
 	}
 	else
 		chunk = (argc - 1);
@@ -252,75 +167,41 @@ int	chunky(int argc)
 	return(chunk);
 }
 
-void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b, int part)
-{
-	struct s_stack	*head;
-	struct s_stack	*head_b;
-	int	current;
-	int	med;
-
-	head = *stack_a;
-	head_b = *stack_b;
-	current = 0;
-
-	med = (find_max(head) / 2);
-	//ft_printf("med is %d\n", med);
-
-	//ft_printf("Stack A:");
-	//printstack(head);
-
-	if (head != NULL)
-	{
-		//rra(&head);
-		while(head && current <= part)
-		{
-			// ft_printf("part is %d \n", part);
-			// ft_printf("current is %d \n", current);
-
-			rra(&head);
-				if(head && (head->data > head->next->data) && (head->data > med))
-					{
-						pb(&head, &head_b);
-					}
-			current++;
-		}
-	}
-
-	*stack_a = head;
-	*stack_b = head_b;
-}
-
 void	wtf(struct s_stack **stack_a, struct s_stack **stack_b, int argc)
 {
 	struct s_stack	*head;
 	struct s_stack	*head_b;
 	int	size;
-	int	max;
+	int	i;
 	int	chunk;
 
 
 	head = *stack_a;
 	head_b = *stack_b;
-	max = find_max(head);
 	chunk = chunky(argc);
+	i = 0;
 
-	hin_her(&head, &head_b, chunk);
+	if((argc - 1) >= 6 && (argc - 1) <= 100)
+	{
+		while(head && i != 6)
+		{
+			hin_her(&head, &head_b, chunk * i + 1);
+			i++;
+		}
+	}
+	else if((argc - 1) >= 101 && (argc - 1) <= 500)
+	{
+		while(head && i != 12)
+		{
+			hin_her(&head, &head_b, chunk * i + 1);
+			i++;
+		}
+	}
+	else
+		hin_her(&head, &head_b, chunk);
 
 	size = stacksize(head);
 	sort_max(&head, &head_b);
-
-//size would be good if part of stack
-//	ft_printf("size is %d \n", size);
-
-	 reverse_compare(&head, &head_b, size - 1);
-
-	sort_max(&head, &head_b);
-
-	while(head->data != max)
-	{
-		rra(&head);
-	}
-	ra(&head);
 
 	*stack_a = head;
 	*stack_b = head_b;

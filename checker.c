@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/02 13:41:33 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 17:08:36 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int	check_sort(struct s_stack *stack)
 	{
 		if(head->data > head->next->data)
 			{
-				// ft_printf("stack is not sorted\n");
+				ft_printf("stack is not sorted\n");
 				return(1);
 			}
 		head = head->next;
 	}
-	// ft_printf("stack is sorted\n");
+	ft_printf("stack is sorted\n");
 	return(0);
 }
 

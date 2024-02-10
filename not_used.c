@@ -121,6 +121,86 @@ int	check_reversed_order(struct s_stack *stack)
 	return(0);
 }
 
+void	presort_back(struct s_stack **stack_a, struct s_stack **stack_b)
+{
+	int	size_b;
+	int	min_b;
+	int	current_pos;
+	struct s_stack	*head_a;
+	struct s_stack	*head_b;
+
+	current_pos = 0;
+
+	size_b = stacksize(*stack_b);
+
+	head_b = *stack_b;
+	head_a = *stack_a;
+
+	while(head_b && current_pos < size_b)
+	{
+		min_b = find_min(head_b);
+		put_on_top_b(&head_b, min_b);
+		pa(&head_a, &head_b);
+	 	current_pos++;
+	}
+		ft_printf("Stack A after presort: ");
+ 			printstack(head_a);
+			ft_printf("Stack B after presort: ");
+ 			printstack(head_b);
+
+	*stack_a = head_a;
+	*stack_b = head_b;
+}
+
+
+void	reverse_compare(struct s_stack **stack_a, struct s_stack **stack_b, int part)
+{
+	struct s_stack	*head;
+	struct s_stack	*head_b;
+	int	current;
+	int	med;
+
+	head = *stack_a;
+	head_b = *stack_b;
+	current = 0;
+
+	med = (find_max(head) / 2);
+	//ft_printf("med is %d\n", med);
+
+	//ft_printf("Stack A:");
+	//printstack(head);
+
+	if (head != NULL)
+	{
+		//rra(&head);
+		while(head && current < part)
+		{
+			// ft_printf("part is %d \n", part);
+			// ft_printf("current is %d \n", current);
+
+			rra(&head);
+				// if(head && (head->data > head->next->data) && (head->data > med))
+				// 	{
+				// 		pb(&head, &head_b);
+				// 	}
+			current++;
+		}
+	}
+
+	*stack_a = head;
+	*stack_b = head_b;
+}
+
+
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("Element %d: %s\n", k, array[k]);
+	// }
+	// for(int k = 0; k < n; k++)
+	// {
+	// 	ft_printf("Element %d: %s\n", k, array[k]);
+	// }
+
 
 // static void	bubble_index(struct s_stack **stack)
 // {

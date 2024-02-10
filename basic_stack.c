@@ -6,142 +6,95 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 16:19:02 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 17:23:08 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-char	**args_array(int argc, char **argv)
+void	printstack(struct s_stack *stack)
 {
-	char	**array;
-	int	i;
+	struct s_stack *head;
 
-	if(argc < 2)
+	head = stack;
+
+	while (head != NULL)
 	{
-		ft_printf("not enough arguments\n");
-		return(NULL);
+		ft_printf(" (%d) ", head->data);
+		head = head->next;
 	}
-
-	array = (char **)malloc((argc - 1) * sizeof(char *));
-	i = 1;
-
-	while(i < argc)
-	{
-		array[i - 1] = argv[i];
-		i++;
-	}
-	return(array);
+	ft_printf("\n");
 }
 
-static void ft_swap(char **a, char **b)
+struct s_stack *create_node(int data)
 {
-	char	*tmp;
+	struct s_stack	*node;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	node = (struct s_stack *)malloc(sizeof(struct s_stack));
+	if (node != NULL)
+	{
+		node->data = data;
+		node->next = NULL;
+		node->prev = NULL;
+	}
+	else
+	{
+		ft_printf("Error allocating memory");
+	}
+	return node;
 }
 
-void	array_sort(char **array, int n)
-{
-	int	i;
-	int j;
 
-	i = 0;
-
-	for(int k = 0; k < n; k++)
-	{
-		ft_printf("befor sort Element %d: %s\n", k, array[k]);
-	}
-
-	while(i < n - 1)
-	{
-		j = 0;
-		while(j < n - i - 1)
-		{
-			if(ft_atoi(array[j]) > ft_atoi(array[j + 1]))
-			{
-				ft_swap(&array[j], &array[j + 1]);
-			}
-			j++;
-		}
-		i++;
-	}
-
-	for(int k = 0; k < n; k++)
-	{
-		ft_printf("Element %d: %s\n", k, array[k]);
-	}
-}
-
-// void	array_index(char **array, int n)
-// {
-// 	int	index;
-
-// 	index = 0;
-
-// 	while(index < n)
-// 	{
-// 		++index;
-// 	}
-// }
-
-
-	//immer noch probleme mit richtig index!!!!
-
-
-
-
-void	assign_index(struct s_stack **stack, char **array, int n)
+struct s_stack *init_stack(int argc, char **argv)
 {
 	struct s_stack	*head;
 	struct s_stack	*current;
-
+	struct s_stack	*node;
 	int	i;
+	int	value;
 
-	i = 0;
-	head = *stack;
+	head = 0;
+	current = 0;
+	i = 1;
 
-	ft_printf("stack is: \n");
-	printstack(head);
-
-	for(int k = 0; k < n; k++)
+	while (i < argc)
 	{
-		ft_printf("array %d: %s\n", k, array[k]);
-	}
-
-	while(i < n)
-	{
-		current = head;
-
-		while(current != NULL && current->data != ft_atoi(array[i]))
+		value = atoi_ps(argv[i]);
+		if (value != 0 || (value == 0 && argv[i][0] == '0'))
 		{
-			current = current->next;
+			node = create_node(value);
+			if (node != NULL)
+			{
+				if (head == NULL)
+				{
+					head = node;
+					current = head;
+				}
+				else
+				{
+					current->next = node;
+					node->prev = current;
+					current = node;
+				}
+				i++;
+			}
+			else
+			{
+				ft_printf("Error Init");
+			}
 		}
-		if(current != NULL)
+		else
 		{
-		//	ft_printf("i is: %d\n", i);
-			current->index = i;
+			ft_printf("Error Convert");
+			break;
 		}
-		i++;
 	}
-	//*stack = head;
+	return(head);
 }
 
-
-void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
+struct s_stack *init_empty_stack(void)
 {
-	char	**array;
-	struct s_stack	*head;
-
-	head = stack;
-	array = args_array(argc, argv);
-	array_sort(array, argc - 1);
-	assign_index(&head, array, argc - 1);
-
-//	stack = head;
-	free(array);
+	return(NULL);
 }
 
 int	stacksize(struct s_stack *stack)
@@ -158,5 +111,4 @@ int	stacksize(struct s_stack *stack)
 	}
 	return (i);
 }
-
 
