@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/09 18:11:00 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:19:02 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ void	array_sort(char **array, int n)
 
 	i = 0;
 
-	// for(int k = 0; k < n; k++)
-	// {
-	// 	ft_printf("befor sort Element %d: %s\n", k, array[k]);
-	// }
+	for(int k = 0; k < n; k++)
+	{
+		ft_printf("befor sort Element %d: %s\n", k, array[k]);
+	}
 
 	while(i < n - 1)
 	{
 		j = 0;
 		while(j < n - i - 1)
 		{
-			if(strcmp(array[j], array[j + 1]) > 0)
+			if(ft_atoi(array[j]) > ft_atoi(array[j + 1]))
 			{
 				ft_swap(&array[j], &array[j + 1]);
 			}
@@ -69,10 +69,10 @@ void	array_sort(char **array, int n)
 		i++;
 	}
 
-	// for(int k = 0; k < n; k++)
-	// {
-	// 	ft_printf("Element %d: %s\n", k, array[k]);
-	// }
+	for(int k = 0; k < n; k++)
+	{
+		ft_printf("Element %d: %s\n", k, array[k]);
+	}
 }
 
 // void	array_index(char **array, int n)
@@ -103,13 +103,13 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 	i = 0;
 	head = *stack;
 
-	// ft_printf("stack is: \n");
-	// printstack(head);
+	ft_printf("stack is: \n");
+	printstack(head);
 
-	// for(int k = 0; k < n; k++)
-	// {
-	// 	ft_printf("array %d: %s\n", k, array[k]);
-	// }
+	for(int k = 0; k < n; k++)
+	{
+		ft_printf("array %d: %s\n", k, array[k]);
+	}
 
 	while(i < n)
 	{
