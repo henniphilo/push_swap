@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/11 17:10:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:31:14 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ static void	choose_logic(t_stack **stack_a, t_stack *stack_b, int argc)
 	}
 	else if (argc == 6)
 	{
-		//stack_b = init_empty_stack();
 		sort_five(stack_a, &stack_b);
 	}
 	else
 	{
-		//stack_b = init_empty_stack();
 		wtf(stack_a, &stack_b, argc);
 	}
 }

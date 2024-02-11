@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 19:12:14 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:00:18 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,62 +39,6 @@ void	hin_her(struct s_stack **stack_a, struct s_stack **stack_b, int chunk)
 	*stack_b = head_b;
 }
 
-void	push_max(struct s_stack **stack_a, struct s_stack **stack_b)
-{
-	struct s_stack	*head;
-	struct s_stack	*head_b;
-	int				max;
-	int				pos;
-	int				size;
-
-	head = *stack_a;
-	head_b = *stack_b;
-	max = find_max(head_b);
-	if (head_b->data == max)
-	{
-		pa(&head, &head_b);
-	}
-	max = find_max(head_b);
-	size = stacksize(head_b);
-	pos = find_num_position(head_b, max, size);
-	if (pos == 1)
-	{
-		sb(&head_b);
-	}
-	else if (pos <= (size / 2 + size % 2))
-	{
-		while (head_b != NULL && head_b->data != max)
-		{
-			rb(&head_b);
-		}
-		pa(&head, &head_b);
-	}
-	else if (head_b && (pos > (size / 2 + size % 2)))
-	{
-		while (head_b != NULL && head_b->data != max)
-		{
-			rrb(&head_b);
-		}
-	}
-	*stack_a = head;
-	*stack_b = head_b;
-}
-
-void	sort_max(struct s_stack **stack_a, struct s_stack **stack_b)
-{
-	struct s_stack	*head;
-	struct s_stack	*head_b;
-
-	head = *stack_a;
-	head_b = *stack_b;
-	while (head_b)
-	{
-		push_max(&head, &head_b);
-	}
-	*stack_a = head;
-	*stack_b = head_b;
-}
-
 int	chunky(int argc)
 {
 	int	chunk;
@@ -114,37 +58,41 @@ int	chunky(int argc)
 	return (chunk);
 }
 
-void	wtf(struct s_stack **stack_a, struct s_stack **stack_b, int argc)
+static void	way(t_stack **head, t_stack **head_b, int argc, int chunk)
 {
-	struct s_stack	*head;
-	struct s_stack	*head_b;
-	int				size;
-	int				i;
-	int				chunk;
+	int	i;
 
-	head = *stack_a;
-	head_b = *stack_b;
-	chunk = chunky(argc);
 	i = 0;
 	if ((argc - 1) >= 6 && (argc - 1) <= 100)
 	{
-		while (head && i != 6)
+		while (*head && i != 6)
 		{
-			hin_her(&head, &head_b, chunk * i + 1);
+			hin_her(head, head_b, chunk * i + 1);
 			i++;
 		}
 	}
 	else if ((argc - 1) >= 101 && (argc - 1) <= 500)
 	{
-		while (head && i != 12)
+		while (*head && i != 12)
 		{
-			hin_her(&head, &head_b, chunk * i + 1);
+			hin_her(head, head_b, chunk * i + 1);
 			i++;
 		}
 	}
 	else
-		hin_her(&head, &head_b, chunk);
-	size = stacksize(head);
+		hin_her(head, head_b, chunk);
+}
+
+void	wtf(struct s_stack **stack_a, struct s_stack **stack_b, int argc)
+{
+	struct s_stack	*head;
+	struct s_stack	*head_b;
+	int				chunk;
+
+	head = *stack_a;
+	head_b = *stack_b;
+	chunk = chunky(argc);
+	way(&head, &head_b, argc, chunk);
 	sort_max(&head, &head_b);
 	*stack_a = head;
 	*stack_b = head_b;
