@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 18:40:42 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:28:39 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ struct s_stack	*create_node(int data)
 	return (node);
 }
 
+static void	update_stack(t_stack **head, t_stack **current, t_stack *node)
+{
+	if (*head == NULL)
+	{
+		*head = node;
+		*current = *head;
+	}
+	else
+	{
+		(*current)->next = node;
+		node->prev = *current;
+		*current = node;
+	}
+}
+
 struct s_stack	*init_stack(int argc, char **argv)
 {
 	struct s_stack	*head;
@@ -62,25 +77,12 @@ struct s_stack	*init_stack(int argc, char **argv)
 			node = create_node(value);
 			if (node != NULL)
 			{
-				if (head == NULL)
-				{
-					head = node;
-					current = head;
-				}
-				else
-				{
-					current->next = node;
-					node->prev = current;
-					current = node;
-				}
+				update_stack(&head, &current, node);
 				i++;
 			}
 		}
 		else
-		{
 			ft_printf("Error Convert");
-			break ;
-		}
 	}
 	return (head);
 }
@@ -88,19 +90,4 @@ struct s_stack	*init_stack(int argc, char **argv)
 struct s_stack	*init_empty_stack(void)
 {
 	return (NULL);
-}
-
-int	stacksize(struct s_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	if (stack == NULL)
-		return (1);
-	while (stack)
-	{
-		stack = stack->next;
-		i++;
-	}
-	return (i);
 }
