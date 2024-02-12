@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 17:20:09 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 18:59:13 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:49:52 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 char	**args_array(int argc, char **argv)
 {
 	char	**array;
-	int	i;
+	int		i;
 
-	if(argc < 2)
+	if (argc < 2)
 	{
 		ft_printf("not enough arguments\n");
-		return(NULL);
+		return (NULL);
 	}
-
 	array = (char **)malloc((argc - 1) * sizeof(char *));
 	i = 1;
-
-	while(i < argc)
+	while (i < argc)
 	{
 		array[i - 1] = argv[i];
 		i++;
 	}
-	return(array);
+	return (array);
 }
 
-static void ft_swap(char **a, char **b)
+static void	ft_swap(char **a, char **b)
 {
 	char	*tmp;
 
@@ -46,16 +44,15 @@ static void ft_swap(char **a, char **b)
 void	array_sort(char **array, int n)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
-
-	while(i < n - 1)
+	while (i < n - 1)
 	{
 		j = 0;
-		while(j < n - i - 1)
+		while (j < n - i - 1)
 		{
-			if(ft_atoi(array[j]) > ft_atoi(array[j + 1]))
+			if (ft_atoi(array[j]) > ft_atoi(array[j + 1]))
 			{
 				ft_swap(&array[j], &array[j + 1]);
 			}
@@ -69,21 +66,18 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 {
 	struct s_stack	*head;
 	struct s_stack	*current;
-
-	int	i;
+	int				i;
 
 	i = 0;
 	head = *stack;
-
-	while(i < n)
+	while (i < n)
 	{
 		current = head;
-
-		while(current != NULL && current->data != ft_atoi(array[i]))
+		while (current != NULL && current->data != ft_atoi(array[i]))
 		{
 			current = current->next;
 		}
-		if(current != NULL)
+		if (current != NULL)
 		{
 			current->index = i;
 		}
@@ -93,13 +87,12 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 
 void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
 {
-	char	**array;
 	struct s_stack	*head;
+	char			**array;
 
 	head = stack;
 	array = args_array(argc, argv);
 	array_sort(array, argc - 1);
 	assign_index(&head, array, argc - 1);
-
 	free(array);
 }

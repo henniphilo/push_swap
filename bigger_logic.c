@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/11 18:00:18 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:15:11 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	chunky(int argc)
 	}
 	else
 		chunk = (argc - 1);
-	ft_printf("chunk is: %d\n", chunk);
 	return (chunk);
 }
 

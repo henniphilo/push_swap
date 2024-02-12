@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:25:37 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/11 16:35:09 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:43:55 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,15 @@ void	push_min(struct s_stack **stack_a, struct s_stack **stack_b)
 	else if (min_pos <= (size / 2 + size % 2))
 	{
 		while (*stack_a != NULL && (*stack_a)->data != min)
-		{
-			ra(&*stack_a);
-		}
+			ra(stack_a);
 	}
 	else if (min_pos > (size / 2 + size % 2))
 	{
 		while (*stack_a != NULL && (*stack_a)->data != min)
-		{
-			rra(&*stack_a);
-		}
+			rra(stack_a);
 	}
 	if ((*stack_a)->data == min)
-	{
 		pb(&*stack_a, stack_b);
-	}
 }
 
 void	put_on_top_a(struct s_stack **stack, int num)
@@ -85,22 +79,16 @@ void	put_on_top_a(struct s_stack **stack, int num)
 		return ;
 	}
 	if (num_pos == 1)
-	{
 		sa(stack);
-	}
 	else if (num_pos <= (size / 2 + size % 2))
 	{
 		while (*stack != NULL && (*stack)->data != num)
-		{
 			ra(stack);
-		}
 	}
 	else if (num_pos > (size / 2 + size % 2))
 	{
 		while (*stack != NULL && (*stack)->data != num)
-		{
 			rra(stack);
-		}
 	}
 }
 
@@ -118,21 +106,15 @@ void	put_on_top_b(struct s_stack **stack, int num)
 		return ;
 	}
 	if (num_pos == 1)
-	{
 		sb(stack);
-	}
 	else if (num_pos <= (size / 2 + size % 2))
 	{
 		while (*stack != NULL && (*stack)->data != num)
-		{
 			rb(stack);
-		}
 	}
 	else if (num_pos > (size / 2 + size % 2))
 	{
 		while (*stack != NULL && (*stack)->data != num)
-		{
 			rrb(stack);
-		}
 	}
 }
