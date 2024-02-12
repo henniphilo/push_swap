@@ -6,18 +6,9 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/12 14:14:01 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:44:10 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//stacks bilden
-// checken ob elemente valide sind
-// in bereich von int min und max
-// checken nach vorzeichen
-// befehle implementieren
-// dann logik
-
-//checke ob es schon sortiert ist!
 
 #include "pushswap.h"
 
@@ -51,6 +42,31 @@ static int	check_num(char *argument)
 	return (1);
 }
 
+void	check_args(int argc, char **argv)
+{
+	char	**arguments;
+	int		i;
+	long	num;
+
+	if (argc >= 2)
+	{
+		i = 1;
+		arguments = argv;
+		while (arguments[i])
+		{
+			num = ft_atoi(arguments[i]);
+			if ((!check_num(arguments[i]))
+				|| (!(num >= -2147483648 && num <= 2147483647))
+				|| check_duplicates(arguments, i, num))
+			{
+				ft_printf("Error");
+				exit(-1);
+			}
+			i++;
+		}
+	}
+}
+
 int	check_sort(struct s_stack *stack)
 {
 	struct s_stack	*head;
@@ -65,29 +81,4 @@ int	check_sort(struct s_stack *stack)
 		head = head->next;
 	}
 	return (0);
-}
-
-void	check_args(int argc, char **argv)
-{
-	char	**arguments;
-	int		i;
-	long	num;
-
-	if (argc >= 2)
-	{
-		i = 1;
-		arguments = argv;
-		while (arguments[i])
-		{
-			num = ft_atoi(arguments[i]);
-			if (!check_num(arguments[i])
-				|| (num < INT_MIN || num > INT_MAX)
-				|| check_duplicates(arguments, i, num))
-			{
-				ft_printf("Error");
-				exit(-1);
-			}
-			i++;
-		}
-	}
 }
