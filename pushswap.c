@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/13 12:45:45 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:54:40 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	main(int argc, char **argv)
 	if ((check_sort(stack_a)) == 1)
 	{
 		stack_b = init_empty_stack();
-		ft_printf("stack ist: ");
-		printstack(stack_a);
 		choose_logic(&stack_a, stack_b, argc);
 		check_sort(stack_a);
 	}
