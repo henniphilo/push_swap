@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:29:53 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/12 17:40:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:43:21 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 long int	ft_atoi(const char *str)
 {
 	long int		sign;
-	long	result;
-	int		i;
+	long			result;
+	int				i;
 
 	sign = 1;
 	result = 0;

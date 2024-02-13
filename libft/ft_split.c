@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:34:47 by hwiemann          #+#    #+#             */
-/*   Updated: 2023/05/17 11:10:06 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:48:08 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while (*s)
 	{
+		ft_printf("in split\n");
 		while (*s == c && *s)
 			s++;
 		if (*s)

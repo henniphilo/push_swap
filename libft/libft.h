@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:32:39 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/12 17:39:48 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:47:06 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t size);
 int		ft_memcmp(const void *a1, const void *a2, size_t size);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-long int	ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s);
+long	ft_atoi(const char *str);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
