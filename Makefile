@@ -4,7 +4,8 @@ LIBFT = libft
 LIBA = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 
+#CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=leak -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRC = arg_check.c \
@@ -21,18 +22,24 @@ smaller_logic.c \
 stack_assets.c \
 swap.c \
 pushswap.c \
+free_all.c \
+
+OBJ = $(SRC:.c=.o)
 
 all: push_swap
 
-$(NAME): $(SRC) $(LIBFT)/$(LIBA)
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT)/$(LIBA) -o push_swap
+$(NAME): $(OBJ) $(LIBFT)/$(LIBA)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)/$(LIBA) -o push_swap
 
+%.o : %.c
+		$(CC) -c $(CFLAGS) $< -o $@
 
 $(LIBFT)/$(LIBA):
 	@$(MAKE) -C $(LIBFT)
 
 clean:
 	make -C $(LIBFT) clean
+	$(RM) $(OBJ)
 
 fclean: clean
 	make -C $(LIBFT) fclean

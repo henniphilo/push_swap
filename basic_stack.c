@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:20:17 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/11 17:28:39 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:17:18 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ struct s_stack	*create_node(int data)
 		node->data = data;
 		node->next = NULL;
 		node->prev = NULL;
+		node->index = 0;
 	}
 	else
 	{

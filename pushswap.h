@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/13 12:11:36 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/14 21:08:58 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef struct s_stack
 t_stack	*init_empty_stack(void);
 t_stack	*init_stack(int argc, char **argv);
 t_stack	*create_node(int data);
-t_stack	*pop(struct s_stack *head);
-t_stack	*push(struct s_stack *head, int data);
-t_stack	*swap_stack(struct s_stack **stack);
+//t_stack	*pop(struct s_stack *head);
+//t_stack	*push(struct s_stack *head, int data);
+void	swap_stack(struct s_stack **stack);
 t_stack	*rota_stack(struct s_stack **head);
 t_stack	*reverse_rotation(struct s_stack **stack);
 t_stack	*sa(struct s_stack **stack_a);
@@ -45,11 +45,13 @@ t_stack	*rrb(struct s_stack **stack_b);
 
 char	**args_array(int argc, char **argv);
 
+void	free_node(struct s_stack *node);
+void	free_stack(struct s_stack *stack);
 void	check_args(int argc, char **argv);
 void	array_sort(char **array, int n);
 void	to_sorted_array(int argc, char **argv, struct s_stack *stack);
 void	printstack(struct s_stack *stack);
-void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to);
+void	push_stack(struct s_stack **head_from, struct s_stack **head_to);
 void	push_min(struct s_stack **stack_a, struct s_stack **stack_b);
 void	sort_three(struct s_stack **stack_a);
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b);

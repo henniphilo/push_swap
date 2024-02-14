@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 18:46:56 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/12 13:51:45 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/14 21:22:21 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,33 @@
 
 //swapping the first to elements of a stack
 
-struct s_stack	*swap_stack(struct s_stack **stack)
+void	swap_stack(struct s_stack **stack)
 {
-	int	firstelement;
-	int	secondelement;
+	(*stack)->next->next = (*stack);
+	(*stack)->next->prev = NULL;
+	(*stack)->next = (*stack)->next->next;
+	(*stack)->prev = (*stack)->next;
+	// int	firstelement;
+	// int	secondelement;
 
-	if (*stack == NULL)
-	{
-		ft_printf("Stack is empty no swapping");
-		return (NULL);
-	}
-	firstelement = (*stack)->data;
-	*stack = pop(*stack);
-	if (*stack == NULL)
-	{
-		ft_printf("Stack has not enaugh elements to swap");
-		return (NULL);
-	}
-	secondelement = (*stack)->data;
-	*stack = pop(*stack);
-	*stack = push(*stack, firstelement);
-	*stack = push(*stack, secondelement);
-	(*stack)->data = secondelement;
-	return (*stack);
+	// if (*stack == NULL)
+	// {
+	// 	ft_printf("Stack is empty no swapping");
+	// 	return (NULL);
+	// }
+	// firstelement = (*stack)->data;
+	// *stack = pop(*stack);
+	// if (*stack == NULL)
+	// {
+	// 	ft_printf("Stack has not enaugh elements to swap");
+	// 	return (NULL);
+	// }
+	// secondelement = (*stack)->data;
+	// *stack = pop(*stack);
+	// *stack = push(*stack, firstelement);
+	// *stack = push(*stack, secondelement);
+	// (*stack)->data = secondelement;
+	// return (*stack);
 }
 
 struct s_stack	*sa(struct s_stack **stack_a)

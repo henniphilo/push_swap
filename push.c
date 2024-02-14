@@ -6,64 +6,82 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/10 19:06:12 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/14 21:17:54 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-struct s_stack	*pop(struct s_stack *head)
+// struct s_stack	*pop(struct s_stack *head)
+// {
+// 	struct s_stack	*newhead;
+
+// 	if (head == NULL)
+// 	{
+// 		ft_printf("empty stack\n");
+// 		return (0);
+// 	}
+// 	newhead = head->next;
+// 	//	free (head);
+// 	if (newhead != NULL)
+// 	{
+// 		newhead->prev = NULL;
+// 	}
+// 	return (newhead);
+// }
+
+void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 {
-	struct s_stack	*newhead;
+	struct s_stack	*newnode = NULL;
 
-	if (head == NULL)
+	if(*head_from)
 	{
-		ft_printf("empty stack\n");
-		return (0);
+		newnode = *head_from;
+		*head_from = (*head_from)->next;
+		(*head_from)->prev = NULL;
 	}
-	newhead = head->next;
-	free (head);
-	if (newhead != NULL)
+	if (*head_to)
 	{
-		newhead->prev = NULL;
+		newnode->next = *head_to;
+		(*head_to)->prev = newnode;
 	}
-	return (newhead);
-}
+	else
+		newnode->next = NULL;
+	*head_to = newnode;
 
-struct s_stack	*push(struct s_stack *head, int data)
-{
-	struct s_stack	*newnode;
 
-	newnode = create_node(data);
-	if (newnode == NULL)
-	{
-		ft_printf("no pushing today\n");
-		return (head);
-	}
-	if (head == NULL)
-	{
-		return (newnode);
-	}
-	newnode->next = head;
-	head->prev = newnode;
-	return (newnode);
+
+	// if (newnode == NULL)
+	// {
+	// 	ft_printf("no pushing today\n");
+	// 	return (head);
+	// }
+	// if (head)
+	// {
+
+	// 	return (newnode);
+	// }
+	// newnode->next = head;
+	// head->prev = newnode;
+	// return (newnode);
 }
 
 //push the first element of a stack to the top of second stack
 
-void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
-{
-	int	firstelement;
+// void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
+// {
+// 	//int	firstelement;
 
-	if (*stack_from == NULL)
-	{
-		ft_printf("Stack is empty\n");
-		return ;
-	}
-	firstelement = (*stack_from)->data;
-	*stack_from = pop(*stack_from);
-	*stack_to = push(*stack_to, firstelement);
-}
+// 	if (*stack_from == NULL)
+// 	{
+// 		ft_printf("Stack is empty\n");
+// 		return ;
+// 	}
+// 	//firstelement = (*stack_from)->data;
+// 	//*stack_from = pop(*stack_from);
+// 	//*stack_to =
+// 	push(stack_from, stack_to);
+// }
 
 //pa | push the first element of stack b to the top of stack a
 
