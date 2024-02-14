@@ -4,10 +4,23 @@ LIBFT = libft
 LIBA = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 
 RM = rm -f
 
-SRC = *.c \
+SRC = arg_check.c \
+array_handle.c \
+basic_stack.c \
+bigger_logic.c \
+finder_putter.c \
+finder.c \
+max.c \
+push.c \
+reverse_rotate.c \
+rotate.c \
+smaller_logic.c \
+stack_assets.c \
+swap.c \
+pushswap.c \
 
 all: push_swap
 
