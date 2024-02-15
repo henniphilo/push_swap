@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:34:13 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/15 11:54:59 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:26:29 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,15 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc <= 2)
+	{
+		if (argc == 2 && (!(ft_atoi(argv[1]))))
+			ft_printf("Error\n");
 		return (1);
+	}
 	if (argc > 2)
 		check_args(argc, argv);
 	stack_a = init_stack(argc, argv);
 	to_sorted_array(argc, argv, stack_a);
-	if (stack_a == NULL)
-	{
-		ft_printf("Error Stack init");
-		free(stack_a);
-		return (1);
-	}
 	if ((check_sort(stack_a)) == 1)
 	{
 		choose_logic(&stack_a, stack_b, argc);

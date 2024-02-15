@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/15 11:52:16 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:19:23 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_args(int argc, char **argv)
 				|| (!(num >= -2147483648 && num <= 2147483647))
 				|| check_duplicates(arguments, i, num))
 			{
-				ft_printf("Error");
+				ft_printf("Error\n");
 				exit(-1);
 			}
 			i++;
