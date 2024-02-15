@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:12 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 14:32:17 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:50:09 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,9 @@ void	sort_three(struct s_stack **stack_a)
 
 void	sort_five(struct s_stack **stack_a, struct s_stack **stack_b)
 {
-	struct s_stack	*head;
-
-	head = *stack_a;
-	push_min(&head, stack_b);
-	push_min(&head, stack_b);
-	sort_three(&head);
-	pa(&head, stack_b);
-	pa(&head, stack_b);
-	// free(head);
-	//free(stack_b);
+	push_min(stack_a, stack_b);
+	push_min(stack_a, stack_b);
+	sort_three(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/15 10:43:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:13:47 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 {
 	struct s_stack	*newnode = NULL;
 
-	if(*head_from)
+	if (*head_from)
 	{
 		newnode = *head_from;
-		if((*head_from)->next)
+		if ((*head_from)->next)
 		{
 			(*head_from)->next->prev = NULL;
 		}
@@ -54,39 +54,6 @@ void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 	}
 	*head_to = newnode;
 }
-
-
-	// if (newnode == NULL)
-	// {
-	// 	ft_printf("no pushing today\n");
-	// 	return (head);
-	// }
-	// if (head)
-	// {
-
-	// 	return (newnode);
-	// }
-	// newnode->next = head;
-	// head->prev = newnode;
-	// return (newnode);
-
-
-//push the first element of a stack to the top of second stack
-
-// void	push_stack(struct s_stack **stack_from, struct s_stack **stack_to)
-// {
-// 	//int	firstelement;
-
-// 	if (*stack_from == NULL)
-// 	{
-// 		ft_printf("Stack is empty\n");
-// 		return ;
-// 	}
-// 	//firstelement = (*stack_from)->data;
-// 	//*stack_from = pop(*stack_from);
-// 	//*stack_to =
-// 	push(stack_from, stack_to);
-// }
 
 //pa | push the first element of stack b to the top of stack a
 
