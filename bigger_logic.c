@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:21:51 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 20:27:42 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:53:01 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,4 @@ void	wtf(struct s_stack **stack_a, struct s_stack **stack_b, int argc)
 	sort_max(&head, &head_b);
 	*stack_a = head;
 	*stack_b = head_b;
-	//free(*stack_b);
 }

@@ -6,31 +6,11 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 17:20:09 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 20:17:30 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:52:45 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-// char	**args_array(int argc, char **argv)
-// {
-// 	char	**array;
-// 	int		i;
-
-// 	if (argc < 2)
-// 	{
-// 		ft_printf("not enough arguments\n");
-// 		return (NULL);
-// 	}
-// 	array = (char **)malloc((argc - 1) * sizeof(char *));
-// 	i = 1;
-// 	while (i < argc)
-// 	{
-// 		array[i - 1] = argv[i];
-// 		i++;
-// 	}
-// 	return (array);
-// }
 
 static void	ft_swap(char **a, char **b)
 {
@@ -88,11 +68,8 @@ void	assign_index(struct s_stack **stack, char **array, int n)
 void	to_sorted_array(int argc, char **argv, struct s_stack *stack)
 {
 	struct s_stack	*head;
-//	char			**array;
 
 	head = stack;
-//	array = args_array(argc, argv);
 	array_sort(argv, argc - 1);
 	assign_index(&head, argv, argc - 1);
-	//free(array);
 }

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:44:25 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 21:08:58 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:53:22 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ typedef struct s_stack
 t_stack	*init_empty_stack(void);
 t_stack	*init_stack(int argc, char **argv);
 t_stack	*create_node(int data);
-//t_stack	*pop(struct s_stack *head);
-//t_stack	*push(struct s_stack *head, int data);
-void	swap_stack(struct s_stack **stack);
 t_stack	*rota_stack(struct s_stack **head);
 t_stack	*reverse_rotation(struct s_stack **stack);
 t_stack	*sa(struct s_stack **stack_a);
@@ -45,6 +42,7 @@ t_stack	*rrb(struct s_stack **stack_b);
 
 char	**args_array(int argc, char **argv);
 
+void	swap_stack(struct s_stack **stack);
 void	free_node(struct s_stack *node);
 void	free_stack(struct s_stack *stack);
 void	check_args(int argc, char **argv);

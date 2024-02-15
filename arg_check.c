@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:27:42 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 14:16:12 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:52:16 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,5 @@ int	check_sort(struct s_stack *stack)
 		}
 		head = head->next;
 	}
-	//free(head);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/15 11:13:47 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:54:36 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@
 
 void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 {
-	struct s_stack	*newnode = NULL;
+	struct s_stack	*newnode;
 
+	newnode = NULL;
 	if (*head_from)
 	{
 		newnode = *head_from;
