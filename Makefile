@@ -4,8 +4,8 @@ LIBFT = libft
 LIBA = libft.a
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=leak -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=leak -fsanitize=address
+#CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRC = arg_check.c \

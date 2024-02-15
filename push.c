@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 13:43:35 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 21:17:54 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:43:54 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 	if(*head_from)
 	{
 		newnode = *head_from;
+		if((*head_from)->next)
+		{
+			(*head_from)->next->prev = NULL;
+		}
 		*head_from = (*head_from)->next;
-		(*head_from)->prev = NULL;
 	}
 	if (*head_to)
 	{
@@ -46,9 +49,11 @@ void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 		(*head_to)->prev = newnode;
 	}
 	else
+	{
 		newnode->next = NULL;
+	}
 	*head_to = newnode;
-
+}
 
 
 	// if (newnode == NULL)
@@ -64,7 +69,7 @@ void	push_stack(struct s_stack **head_from, struct s_stack **head_to)
 	// newnode->next = head;
 	// head->prev = newnode;
 	// return (newnode);
-}
+
 
 //push the first element of a stack to the top of second stack
 

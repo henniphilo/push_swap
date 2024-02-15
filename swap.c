@@ -6,7 +6,7 @@
 /*   By: hwiemann <hwiemann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 18:46:56 by hwiemann          #+#    #+#             */
-/*   Updated: 2024/02/14 21:22:21 by hwiemann         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:37:55 by hwiemann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,43 @@
 
 void	swap_stack(struct s_stack **stack)
 {
-	(*stack)->next->next = (*stack);
-	(*stack)->next->prev = NULL;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->prev = (*stack)->next;
-	// int	firstelement;
+	struct s_stack	*tmp;
+
+	tmp = (*stack)->next;
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		(*stack)->next = tmp->next;
+		if(tmp->next != NULL)
+		{
+			tmp->next->prev = *stack;
+		}
+		tmp->next = *stack;
+		tmp->prev = NULL;
+		(*stack)->prev = tmp;
+		*stack = tmp;
+	}
+}
+
+
+// 	(*stack)->next->next = (*stack);
+// 	(*stack)->next->prev = NULL;
+// 	(*stack)->next = (*stack)->next->next;
+// 	(*stack)->prev = (*stack)->next;
+
+// }
+
+struct s_stack	*sa(struct s_stack **stack_a)
+{
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+	{
+		return (*stack_a);
+	}
+	swap_stack(stack_a);
+	ft_printf("sa\n");
+	return (*stack_a);
+}
+
+// int	firstelement;
 	// int	secondelement;
 
 	// if (*stack == NULL)
@@ -41,18 +73,6 @@ void	swap_stack(struct s_stack **stack)
 	// *stack = push(*stack, secondelement);
 	// (*stack)->data = secondelement;
 	// return (*stack);
-}
-
-struct s_stack	*sa(struct s_stack **stack_a)
-{
-	if (*stack_a == NULL)
-	{
-		return (*stack_a);
-	}
-	swap_stack(stack_a);
-	ft_printf("sa\n");
-	return (*stack_a);
-}
 
 struct s_stack	*sb(struct s_stack **stack_b)
 {
